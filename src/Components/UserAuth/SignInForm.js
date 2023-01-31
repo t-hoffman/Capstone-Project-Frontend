@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const SignInForm = ({ setToken }) => {
@@ -21,7 +21,7 @@ const SignInForm = ({ setToken }) => {
       },
       body: JSON.stringify(input)
     }
-    const userLogin = await (await fetch('http://127.0.0.1:5000/login', options)).json()
+    const userLogin = await (await fetch('/login', options)).json()
 
     if (!userLogin['access_token']) return setError(true)
 

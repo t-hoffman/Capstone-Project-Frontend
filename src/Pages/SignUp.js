@@ -1,13 +1,8 @@
 import SignUpForm from 'Components/UserAuth/SignUpForm'
-import React from 'react'
+import '../css/SignUp.css'
 
 const SignUp = () => {
-  return (
-    <div>
-      <h1>Sign up</h1>
-      <SignUpForm />
-    </div>
-  )
+  return <SignUpForm show={true} />
 }
 
 export default SignUp

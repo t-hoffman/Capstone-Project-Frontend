@@ -18,7 +18,7 @@ const useToken = () => {
           'Content-Type': 'application/json'
         }
       }
-      const user = await (await fetch('http://127.0.0.1:5000/verify', options)).json()
+      const user = await (await fetch('/verify', options)).json()
   
       setUserInfo(user)
     }
@@ -42,7 +42,7 @@ const useToken = () => {
       }
     }
 
-    await fetch('http://127.0.0.1:5000/logout', options)
+    await fetch('/logout', options)
     setToken(null)
     window.localStorage.removeItem('token')
   }

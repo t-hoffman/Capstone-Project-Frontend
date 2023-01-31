@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Modal } from 'react-bootstrap'
 
-const SignUpForm = () => {
-  const [input, setInput] = useState({ email: '', username: '', password: '', passwordCheck: '' })
+const SignUpForm = ({ show, setShow }) => {
+  const initialState = { email: '', username: '', password: '', passwordCheck: '' }
+  const [input, setInput] = useState(initialState)
   const [error, setError] = useState(false)
   const navigate = useNavigate()
 
@@ -27,27 +29,54 @@ const SignUpForm = () => {
       body: JSON.stringify(input)
     }
 
-    const newUser = await (await fetch('http://127.0.0.1:5000/register', options)).json()
+    const newUser = await (await fetch('/register', options)).json()
     
     newUser['message'] ? navigate('/profile') : setError(newUser['code'])
   }
 
-  const displayError = (code) => {
-    if (code === 1) return <>Email already being used</>
-    if (code === 2) return <>Username already taken</>
-    if (code === 3) return <>Please try again, cannot leave fields blank</>
-    if (code === 4) return <>Passwords do not match</>
+  const handleClose = () => {
+    setShow(!show)
+    setInput(initialState)
+    setError(false)
+  }
+
+  const displayError = {
+    1: 'Email already being used',
+    2: 'Username already taken',
+    3: 'Please try again, cannot leave fields blank',
+    4: 'Passwords do not match',
   }
 
   return (
-    <form>
-      {error && <><span style={{color:'red'}}><b>{displayError(error)}</b></span><br /></>}
-      Email: <input type="text" name="email" value={input.email} onChange={handleChange} /><br />
-      Username: <input type="text" name="username" value={input.username} onChange={handleChange} /><br />
-      Password: <input type="password" name="password" value={input.password} onChange={handleChange} /><br />
-      Password (again): <input type="password" name="passwordCheck" value={input.passwordCheck} onChange={handleChange} /><br />
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
+    <Modal show={show} onHide={() => setShow ? handleClose() : navigate('/')}>
+      <Modal.Header closeButton /* closeVariant="white" */>
+        <Modal.Title><h2>Create your account</h2></Modal.Title>
+      </Modal.Header>
+      <form className="signup-form">
+        <Modal.Body>
+          {error && <span className="signup-error">{displayError[error]}</span>}
+          <div className={error === 1 ? "input-cont input-error" : "input-cont"}>
+            Email
+            <input type="text" name="email" value={input.email} onChange={handleChange} /><br />
+          </div>
+          <div className={error === 2 ? "input-cont input-error" : "input-cont"}>
+            Username
+            <input type="text" name="username" value={input.username} onChange={handleChange} />
+          </div>
+          <div className={error === 4 ? "input-cont input-error" : "input-cont"}>
+            Password
+            <input type="password" name="password" value={input.password} onChange={handleChange} autoComplete="off" />
+          </div>
+          <div className={error === 4 ? "input-cont input-error" : "input-cont"}>
+            Password
+            <input type="password" name="passwordCheck" value={input.passwordCheck} onChange={handleChange} autoComplete="off" />
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button type="submit" onClick={handleSubmit}>Sign up</button>
+        </Modal.Footer>
+      </form>
+    </Modal>
   )
 }
 

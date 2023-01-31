@@ -1,0 +1,65 @@
+.modal-content {
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 15px
+}
+
+.modal-dialog { max-width: 600px !important; margin-top: 25vh }
+.modal-header, .modal-footer { border: none }
+.modal-header { padding: 40px 0 0 40px }
+.modal-footer { justify-content: center }
+
+.modal-header button {
+   position: absolute;
+   top: 15px;
+   right: 15px;
+}
+
+.modal-footer button {
+  width: 75%;
+  outline: none;
+  padding: 15px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+}
+
+.signup-form {
+  width: 100%;
+  padding-left: 4em;
+  padding-right: 4em;
+}
+
+.input-cont {
+  width: 100%;
+  border: 2px solid #1C9BF0;
+  border-radius: 5px;
+  padding: 5px;
+  color: #1C9BF0;
+  font-size: 10pt;
+  margin-top: 10px;
+}
+
+.input-cont input {
+  width: 100%;
+  background-color: #fff;
+  outline: none;
+  border: none;
+  color: #000;
+  font-size: 14pt;
+}
+
+.input-cont input:autofill,
+.input-cont input:-webkit-autofill { 
+  -webkit-box-shadow: 0 0 0 30px white inset !important
+}
+
+.signup-error {
+  color: #ff5656;
+  font-weight: bold;
+}
+
+.input-error { border: 2px solid #ff5656; color: #ff5656 }

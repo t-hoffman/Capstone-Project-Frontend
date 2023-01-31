@@ -1,3 +1,28 @@
-body, html {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+@font-face {
+  font-family: 'Chirp';
+  src: url('../assets/chirp/chirp_regular.otf');
+  font-weight: normal;
 }
+
+@font-face {
+  font-family: 'Chirp';
+  src: url('../assets/chirp/chirp_bold.otf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Chirp Medium';
+  src: url('../assets/chirp/chirp_medium.otf');
+}
+
+@font-face {
+  font-family: 'Chirp Heavy';
+  src: url('../assets/chirp/chirp_heavy.otf');
+}
+
+body, html {
+  font-family: 'Chirp', sans-serif;
+}
+
+* { box-sizing: border-box }
+h1,h2,h3,h4 { font-weight: bold }

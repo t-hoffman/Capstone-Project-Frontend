@@ -1,11 +1,10 @@
-import React from 'react'
 import Footer from './Footer'
 import Header from './Header'
 import '../css/Layout.css'
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div style={{width:'100%'}}>
       <Header />
         {children}
       <Footer />
