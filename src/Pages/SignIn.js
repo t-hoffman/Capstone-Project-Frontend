@@ -12,12 +12,7 @@ const SignIn = () => {
   }, [])
   
 
-  return (
-    <div>
-      <h1>Sign in</h1>
-      <SignInForm setToken={setToken} />
-    </div>
-  )
+  return <SignInForm setToken={setToken} show={true} />
 }
 
 export default SignIn

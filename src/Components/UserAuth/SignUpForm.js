@@ -54,7 +54,7 @@ const SignUpForm = ({ show, setShow }) => {
       </Modal.Header>
       <form className="signup-form">
         <Modal.Body>
-          {error && <span className="signup-error">{displayError[error]}</span>}
+          {error && <span className="header-error">{displayError[error]}</span>}
           <div className={error === 1 ? "input-cont input-error" : "input-cont"}>
             Email
             <input type="text" name="email" value={input.email} onChange={handleChange} /><br />

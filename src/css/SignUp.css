@@ -57,7 +57,7 @@
   -webkit-box-shadow: 0 0 0 30px white inset !important
 }
 
-.signup-error {
+.header-error {
   color: #ff5656;
   font-weight: bold;
 }

@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 
-const SignInForm = ({ setToken }) => {
-  const [input, setInput] = useState({ username: '', password: '' })
+const SignInForm = ({ setToken, show, setShow }) => {
+  const initialState = { username: '', password: '' }
+  const [input, setInput] = useState(initialState)
   const [error, setError] = useState(null)
   const navigate = useNavigate()
 
@@ -29,13 +31,34 @@ const SignInForm = ({ setToken }) => {
     navigate('/profile')
   }
 
+  const handleClose = () => {
+    setShow(!show)
+    setInput(initialState)
+    setError(false)
+  }
+
   return (
-    <form>
-      {error && <><span style={{color:'red'}}><b>User credentials  incorrect, please try again</b></span><br /></>}
-      Username: <input type="text" name="username" value={input.username} onChange={handleChange} /><br />
-      Password: <input type="password" name="password" value={input.password} onChange={handleChange} /><br />
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
+    <Modal show={show} onHide={() => setShow ? handleClose() : navigate('/')}>
+      <Modal.Header closeButton /* closeVariant="white" */>
+        <Modal.Title><h2>Sign in to Tweeter</h2></Modal.Title>
+      </Modal.Header>
+      <form className="signup-form">
+        <Modal.Body>
+        {error && <span className="header-error"><b>User credentials  incorrect, please try again</b></span>}
+          <div className="input-cont">
+            Username
+            <input type="text" name="username" value={input.username} onChange={handleChange} />
+          </div>
+          <div className="input-cont">
+            Password
+            <input type="password" name="password" value={input.password} onChange={handleChange} autoComplete="off" />
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button type="submit" onClick={handleSubmit}>Sign in</button>
+        </Modal.Footer>
+      </form>
+    </Modal>
   )
 }
 
