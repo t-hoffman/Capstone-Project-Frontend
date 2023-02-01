@@ -45,7 +45,7 @@
 
 .input-cont input {
   width: 100%;
-  background-color: #fff;
+  background-color: transparent;
   outline: none;
   border: none;
   color: #000;
@@ -63,3 +63,20 @@
 }
 
 .input-error { border: 2px solid #ff5656; color: #ff5656 }
+
+@media (prefers-color-scheme: dark) {
+  .modal-content { background-color: #000; color: #fff }
+  .modal-footer button:hover { background-color: #161616 }
+  .modal-backdrop { background-color: rgba(72, 140, 185, 0.4) }
+  
+  .modal-footer button {
+    border: 1px solid #536371;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .btn-close {
+    filter: invert(100%) sepia(3%) saturate(0%) hue-rotate(98deg) brightness(119%) contrast(100%);
+  }
+
+  .input-cont input { color: white }
+}

@@ -3,24 +3,25 @@ import { useContext, useEffect, useState } from "react"
 import { Modal } from "react-bootstrap"
 import "../../css/Tweets.css"
 
-const TweetForm = ({ modal, show, setShow }) => {
+const TweetModal = ({ modal, show, setShow }) => {
 
-  return modal ? (
+  return modal && (
     <>
     <Modal show={show} onHide={() => setShow(!show)}>
       <Modal.Header closeButton /* closeVariant="white" */ />
       <Modal.Body>
-        <TweetBox setShow={setShow} />
+        <TweetForm setShow={setShow} />
       </Modal.Body>
     </Modal>
     </>
-  ) : <TweetBox />
+  )
 }
 
-const TweetBox = ({ setShow }) => {
+const TweetForm = ({ setShow }) => {
   const { token, userInfo, navigate, update, setUpdate } = useContext(AuthContext)
   const [input, setInput] = useState({ content: '', retweet_id: null })
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const loader = loading ? {display: 'inline-block'} : {display: 'none'}
   const button = loading ? {display: 'none'} : {display: 'block'}
   const userImage = userInfo?.image ? userInfo.image : 'https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_x96.jpg'
@@ -41,6 +42,8 @@ const TweetBox = ({ setShow }) => {
       body: JSON.stringify(input)
     }
 
+    if (input.content.length <= 0) { setError(true); setLoading(false); return; }
+
     await (await fetch('/tweet', options)).json()
 
     setLoading(false)
@@ -60,11 +63,12 @@ const TweetBox = ({ setShow }) => {
         <img src={userImage} alt="Tweeter" />
       </div>
       <div className="content-right">
+        {error && <span className="header-error">Cannot leave content blank</span>}
         <textarea type="text" 
                   name="content" 
                   placeholder="What's happening?" 
                   onKeyUp={textAreaAdjust} 
-                  onChange={({ target }) => setInput({...input, [target.name]: target.value})} 
+                  onChange={({ target }) => {setInput({...input, [target.name]: target.value}); setError(false)}} 
                   value={input.content}
         ></textarea>
         <div className="tweet-box justify-content-end">
@@ -76,4 +80,4 @@ const TweetBox = ({ setShow }) => {
   )
 }
 
-export default TweetForm
+export { TweetForm, TweetModal }

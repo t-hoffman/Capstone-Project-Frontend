@@ -39,7 +39,7 @@ const SignInForm = ({ setToken, show, setShow }) => {
 
   return (
     <Modal show={show} onHide={() => setShow ? handleClose() : navigate('/')}>
-      <Modal.Header closeButton /* closeVariant="white" */>
+      <Modal.Header closeButton>
         <Modal.Title>
           <h2><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" alt="Tweeter" width="30px" /> Sign in to Tweeter</h2>
         </Modal.Title>

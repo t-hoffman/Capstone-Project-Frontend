@@ -1,4 +1,4 @@
-import TweetForm from "Components/Tweets/TweetForm"
+import { TweetForm } from "Components/Tweets/TweetForm"
 import TweetList from "Components/Tweets/TweetList"
 
 const Home = () => {
@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
     <div className="p-3 mb-3"><h4>Home</h4></div>
-    <TweetForm modal={false} />
+    <TweetForm />
     <TweetList />
     </>
   )

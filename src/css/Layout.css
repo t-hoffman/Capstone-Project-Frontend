@@ -74,16 +74,13 @@ h1,h2,h3,h4 { font-weight: bold }
   outline: none;
   border: none;
   font-size: 16pt;
-}
-
-.blue-link a {
-  color: #169cf1;
-  font-weight: normal;
+  background-color: transparent;
 }
 
 .tweet-icons { display: flex }
 .tweet-icons .blue-icon, 
-.tweet-icons .pink-icon { padding: 5px 8px; border-radius: 50%; margin-top: 5px; }
+.tweet-icons .pink-icon,
+.tweet-icons .green-icon { padding: 5px 8px; border-radius: 50%; margin-top: 5px; }
 .tweet-icons .blue-icon:hover {
   background-color: rgb(24, 158, 242, .15);
   filter: invert(61%) sepia(95%) saturate(4496%) hue-rotate(182deg) brightness(103%) contrast(90%);
@@ -95,6 +92,10 @@ h1,h2,h3,h4 { font-weight: bold }
 .tweet-icons .pink-icon:hover {
   background-color: rgb(249, 25, 128, .15);
   filter: invert(48%) sepia(99%) saturate(7387%) hue-rotate(321deg) brightness(99%) contrast(96%);
+}
+.tweet-icons .green-icon:hover {
+  background-color: rgb(1, 180, 120, .15);
+  filter: invert(41%) sepia(99%) saturate(1542%) hue-rotate(131deg) brightness(97%) contrast(99%);
 }
 
 .tw-footer {
@@ -130,3 +131,21 @@ h1,h2,h3,h4 { font-weight: bold }
 
 .login-btn:hover { background-color: #42A7F1 }
 .signup-btn:hover { background-color: #D7DBDC }
+
+@media (prefers-color-scheme: dark) {
+  body, html { background-color: #000; color: #fff }
+  .left-bar, .middle-bar { border-right: 1px solid #2F3336 }
+  .content-box, .tweet-box { border-top: 1px solid #2F3336 }
+  .content-box a, .tweet-box a { color: #fff }
+  .content-box:hover { background-color: #040404 }
+  .content-right textarea { color: white }
+
+  .tweet-icons .blue-icon, .tweet-icons .pink-icon, .tweet-icons .green-icon {
+    filter: invert(37%) sepia(10%) saturate(152%) hue-rotate(161deg) brightness(95%) contrast(86%);
+  }
+}
+
+.blue-link a {
+  color: #169cf1;
+  font-weight: normal;
+}

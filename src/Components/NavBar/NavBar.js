@@ -1,9 +1,13 @@
-import TweetForm from "Components/Tweets/TweetForm"
-import { useState } from "react"
+import { TweetModal } from "Components/Tweets/TweetForm"
+import { useContext, useState } from "react"
 import { NavLink } from "react-router-dom"
+import settingsIcon from "../../assets/settings.png"
+import settingsIconActive from "../../assets/settingsActive.png"
+import { AuthContext } from "Components/UserAuth/AuthContext"
 import "../../css/NavBar.css"
 
 const NavBar = () => {
+  const { token } = useContext(AuthContext)
   const [show, setShow] = useState(false)
 
   const navItems = [
@@ -34,8 +38,8 @@ const NavBar = () => {
     {
       path: '/settings',
       title: 'Settings',
-      icon: <img src="https://thenounproject.com/api/private/icons/5468081/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABj2fv4mQDXoxls3lGenm7uY7J9eCGB2Hs_x6fJGJdvO5FYSJG8SYtDd8T7aCP_HzYvrQtf_zsLDiWJ6kQNkf-79nPpfQ%3D%3D" alt="Settings" />,
-      activeicon: <img src="https://thenounproject.com/api/private/icons/5468112/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABj2fv4mQDXoxls3lGenm7uY7J9eCGB2Hs_x6fJGJdvO5FYSJG8SYtDd8T7aCP_HzYvrQtf_zsLDiWJ6kQNkf-79nPpfQ%3D%3D" alt="Settings" />
+      icon: <img src={settingsIcon} alt="Settings" />,
+      activeicon: <img src={settingsIconActive} alt="Settings" />
     }
   ]
 
@@ -53,9 +57,9 @@ const NavBar = () => {
     }
     </ul>
     <div className="d-flex w-100 justify-content-center mt-4">
-      <button className="tw-blue-btn-lg" onClick={() => setShow(!show)}>Tweet</button>
+      {token && <button className="tw-blue-btn-lg" onClick={() => setShow(!show)}>Tweet</button>}
     </div>
-    <TweetForm show={show} setShow={setShow} modal={true} />
+    <TweetModal show={show} setShow={setShow} modal={true} />
     </>
   )
 }
