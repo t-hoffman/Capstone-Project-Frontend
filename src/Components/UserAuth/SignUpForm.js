@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Modal } from 'react-bootstrap'
 
 const SignUpForm = ({ show, setShow }) => {
-  const initialState = { email: '', username: '', password: '', passwordCheck: '' }
+  const initialState = { name: '', email: '', username: '', password: '', passwordCheck: '', image: '' }
   const [input, setInput] = useState(initialState)
   const [error, setError] = useState(false)
   const navigate = useNavigate()
@@ -16,9 +16,10 @@ const SignUpForm = ({ show, setShow }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const { email, username, password, passwordCheck } = input;
+    const { password, passwordCheck } = input;
     
-    if (email.length <= 0 || username.length <= 0 || password.length <= 0) return setError(3)
+    for (let key in input) { if (input[key].length <= 0 && key !== 'image') return setError(3) }
+
     if (password !== passwordCheck) return setError(4)
 
     const options = {
@@ -28,10 +29,11 @@ const SignUpForm = ({ show, setShow }) => {
       },
       body: JSON.stringify(input)
     }
+    console.log(input)
 
     const newUser = await (await fetch('/register', options)).json()
-    
-    newUser['message'] ? navigate('/profile') : setError(newUser['code'])
+    const success = () => { setShow(!show); navigate('/profile') }
+    newUser['message'] ? success() : setError(newUser['code'])
   }
 
   const handleClose = () => {
@@ -55,6 +57,10 @@ const SignUpForm = ({ show, setShow }) => {
       <form className="signup-form">
         <Modal.Body>
           {error && <span className="header-error">{displayError[error]}</span>}
+          <div className="input-cont">
+            Name
+            <input type="text" name="name" value={input.name} onChange={handleChange} /><br />
+          </div>
           <div className={error === 1 ? "input-cont input-error" : "input-cont"}>
             Email
             <input type="text" name="email" value={input.email} onChange={handleChange} /><br />
@@ -70,6 +76,10 @@ const SignUpForm = ({ show, setShow }) => {
           <div className={error === 4 ? "input-cont input-error" : "input-cont"}>
             Password
             <input type="password" name="passwordCheck" value={input.passwordCheck} onChange={handleChange} autoComplete="off" />
+          </div>
+          <div className="input-cont">
+            Photo
+            <input type="text" name="image" value={input.image} onChange={handleChange} autoComplete="off" />
           </div>
         </Modal.Body>
         <Modal.Footer>

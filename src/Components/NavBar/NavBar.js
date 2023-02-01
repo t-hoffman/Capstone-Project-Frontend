@@ -1,7 +1,10 @@
+import TweetForm from "Components/Tweets/TweetForm"
+import { useState } from "react"
 import { NavLink } from "react-router-dom"
+import "../../css/NavBar.css"
 
 const NavBar = () => {
-  const classNameFunc = ({ isActive }) => (isActive ? 'nav-list-active' : '')
+  const [show, setShow] = useState(false)
 
   const navItems = [
     {
@@ -28,23 +31,31 @@ const NavBar = () => {
       icon: <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M5.651 19h12.698c-.337-1.8-1.023-3.21-1.945-4.19C15.318 13.65 13.838 13 12 13s-3.317.65-4.404 1.81c-.922.98-1.608 2.39-1.945 4.19zm.486-5.56C7.627 11.85 9.648 11 12 11s4.373.85 5.863 2.44c1.477 1.58 2.366 3.8 2.632 6.46l.11 1.1H3.395l.11-1.1c.266-2.66 1.155-4.88 2.632-6.46zM12 4c-1.105 0-2 .9-2 2s.895 2 2 2 2-.9 2-2-.895-2-2-2zM8 6c0-2.21 1.791-4 4-4s4 1.79 4 4-1.791 4-4 4-4-1.79-4-4z"></path></g></svg>,
       activeicon: <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M17.863 13.44c1.477 1.58 2.366 3.8 2.632 6.46l.11 1.1H3.395l.11-1.1c.266-2.66 1.155-4.88 2.632-6.46C7.627 11.85 9.648 11 12 11s4.373.85 5.863 2.44zM12 2C9.791 2 8 3.79 8 6s1.791 4 4 4 4-1.79 4-4-1.791-4-4-4z"></path></g></svg>,
     },
+    {
+      path: '/settings',
+      title: 'Settings',
+      icon: <img src="https://thenounproject.com/api/private/icons/5468081/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABj2fv4mQDXoxls3lGenm7uY7J9eCGB2Hs_x6fJGJdvO5FYSJG8SYtDd8T7aCP_HzYvrQtf_zsLDiWJ6kQNkf-79nPpfQ%3D%3D" alt="Settings" />,
+      activeicon: <img src="https://thenounproject.com/api/private/icons/5468112/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABj2fv4mQDXoxls3lGenm7uY7J9eCGB2Hs_x6fJGJdvO5FYSJG8SYtDd8T7aCP_HzYvrQtf_zsLDiWJ6kQNkf-79nPpfQ%3D%3D" alt="Settings" />
+    }
   ]
+
   return (
     <>
     <ul className="nav-list">
     {
-      navItems.map((i, idx) => (
-        <NavLink to={i.path}
+      navItems.map((nav, idx) => (
+        <NavLink to={nav.path}
                  className={({ isActive }) => (isActive ? 'nav-list-active' : 'nav-list')}
                  key={idx}>
-          {({ isActive }) => (<NavIcon isActive={isActive} {...i} />)}
+          {({ isActive }) => (<NavIcon isActive={isActive} {...nav} />)}
         </NavLink>
       ))
     }
     </ul>
     <div className="d-flex w-100 justify-content-center mt-4">
-      <button className="tw-blue-btn-lg">Tweet</button>
+      <button className="tw-blue-btn-lg" onClick={() => setShow(!show)}>Tweet</button>
     </div>
+    <TweetForm show={show} setShow={setShow} modal={true} />
     </>
   )
 }

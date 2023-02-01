@@ -32,50 +32,6 @@ h1,h2,h3,h4 { font-weight: bold }
 .middle-bar { width: 46%; border-right: 1px solid #EFF3F4 }
 .right-bar { width: 31%; padding-left: 20px }
 
-.tw-logo {
-  width: fit-content;
-  padding: 15px;
-  border-radius: 50%;
-  margin-left: 35px;
-}
-
-.tw-logo:hover { background-color: rgb(24, 158, 242, .15) }
-.nav-list a { color: black; text-decoration: none }
-.nav-list svg { width: 25px; margin: -5px 10px 0 0 }
-.nav-list { margin-top: 15px; list-style: none }
-
-.nav-list li {
-  width: fit-content;
-  padding: 10px 30px 10px 10px;
-  margin-top: 10px;
-  font-size: 16pt;
-}
-
-.nav-list li:hover {
-  background-color: #e7eaeb;
-  border-radius: 75px;
-}
-
-.nav-list-active { font-weight: bold }
-
-.tw-blue-btn-lg, .tw-blue-btn-sm {
-  width: 75%;
-  padding: 12px;
-  background-color: #169cf1;
-  outline: none;
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 50px;
-  font-size: 13pt;
-}
-
-.tw-blue-btn-sm {
-  width: fit-content;
-  padding: 7px 12px;
-  font-size: 11pt;
-}
-
 .content-box, .tweet-box {
   display: flex;
   border-top: 1px solid #EFF3F4;
@@ -139,24 +95,6 @@ h1,h2,h3,h4 { font-weight: bold }
 .tweet-icons .pink-icon:hover {
   background-color: rgb(249, 25, 128, .15);
   filter: invert(48%) sepia(99%) saturate(7387%) hue-rotate(321deg) brightness(99%) contrast(96%);
-}
-
-.search-bar {
-  width: 90%;
-  display: flex;
-  background-color: #EFF3F4;
-  border-radius: 50px;
-  padding: 10px;
-  margin: 15px 0;
-}
-
-.search-icon { padding: 0 15px 0 5px }
-.search-icon svg { width: 20px }
-.search-input input {
-  color: #536371;
-  outline: none;
-  border: none;
-  background-color: transparent;
 }
 
 .tw-footer {

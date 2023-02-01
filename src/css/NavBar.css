@@ -1,0 +1,44 @@
+.tw-logo {
+  width: fit-content;
+  padding: 15px;
+  border-radius: 50%;
+  margin-left: 35px;
+}
+
+.tw-logo:hover { background-color: rgb(24, 158, 242, .15) }
+.nav-list a { color: black; text-decoration: none }
+.nav-list svg { width: 25px; margin: -5px 10px 0 0 }
+.nav-list img { width: 35px; height: 35px; margin: -2px 3px 0 -3px; }
+.nav-list { margin-top: 15px; list-style: none }
+
+.nav-list li {
+  width: fit-content;
+  padding: 10px 30px 10px 10px;
+  margin-top: 10px;
+  font-size: 16pt;
+}
+
+.nav-list li:hover {
+  background-color: #e7eaeb;
+  border-radius: 75px;
+}
+
+.nav-list-active { font-weight: bold }
+
+.tw-blue-btn-lg, .tw-blue-btn-sm {
+  width: 75%;
+  padding: 12px;
+  background-color: #169cf1;
+  outline: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 13pt;
+}
+
+.tw-blue-btn-sm {
+  width: fit-content;
+  padding: 7px 12px;
+  font-size: 11pt;
+}

@@ -1,14 +1,13 @@
 import { AuthContext } from 'Components/UserAuth/AuthContext'
 import SignInForm from 'Components/UserAuth/SignInForm'
 import { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
-  const { token, setToken } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { token, setToken, navigate } = useContext(AuthContext)
 
   useEffect(() => {
     if (token) navigate('/profile')
+    // eslint-disable-next-line
   }, [])
   
 

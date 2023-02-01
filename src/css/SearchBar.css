@@ -1,0 +1,17 @@
+.search-bar {
+  width: 90%;
+  display: flex;
+  background-color: #EFF3F4;
+  border-radius: 50px;
+  padding: 10px;
+  margin: 15px 0;
+}
+
+.search-icon { padding: 0 15px 0 5px }
+.search-icon svg { width: 20px }
+.search-input input {
+  color: #536371;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}

@@ -1,10 +1,8 @@
 import { AuthContext } from 'Components/UserAuth/AuthContext'
 import { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 const SignOut = () => {
-  const { deleteToken } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { deleteToken, navigate } = useContext(AuthContext)
   
   useEffect(() => {
     deleteToken()
