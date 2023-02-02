@@ -60,6 +60,7 @@ const useToken = () => {
     setToken: saveToken,
     deleteToken: deleteToken,
     userInfo: userInfo,
+    setUserInfo: setUserInfo,
     navigate: navigate,
     token
   }

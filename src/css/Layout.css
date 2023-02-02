@@ -25,7 +25,12 @@ body, html {
 }
 
 * { box-sizing: border-box }
-h1,h2,h3,h4 { font-weight: bold }
+h1,h2,h3,h4,h5 { font-weight: bold }
+a, a:visited, a:active {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
 
 .z1 { position: relative; z-index: 1 }
 .left-bar { width: 23%; border-right: 1px solid #EFF3F4 }
@@ -47,9 +52,9 @@ h1,h2,h3,h4 { font-weight: bold }
   text-decoration: none;
 }
 
-.content-box a:hover, .tweet-box a:hover {
+/* .content-box a:hover, .tweet-box a:hover {
   text-decoration: underline;
-}
+} */
 
 .profile-icon {
   display: flex;
@@ -133,12 +138,13 @@ h1,h2,h3,h4 { font-weight: bold }
 .signup-btn:hover { background-color: #D7DBDC }
 
 @media (prefers-color-scheme: dark) {
-  body, html { background-color: #000; color: #fff }
+  body, html { background-color: #000; color: #E7E9EA }
+  a, a:visited, a:active { color: #E7E9EA }
   .left-bar, .middle-bar { border-right: 1px solid #2F3336 }
-  .content-box, .tweet-box { border-top: 1px solid #2F3336 }
-  .content-box a, .tweet-box a { color: #fff }
+  .content-box, .tweet-box { border-top: 1px solid #2F3336; color: #E7E9EA }
+  .content-box a, .tweet-box a { color: #E7E9EA }
   .content-box:hover { background-color: #040404 }
-  .content-right textarea { color: white }
+  .content-right textarea { color: #E7E9EA }
 
   .tweet-icons .blue-icon, .tweet-icons .pink-icon, .tweet-icons .green-icon {
     filter: invert(37%) sepia(10%) saturate(152%) hue-rotate(161deg) brightness(95%) contrast(86%);

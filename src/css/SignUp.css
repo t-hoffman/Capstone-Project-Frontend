@@ -62,6 +62,11 @@
   font-weight: bold;
 }
 
+.header-success {
+  color: #00BA7C;
+  font-weight: bold;
+}
+
 .input-error { border: 2px solid #ff5656; color: #ff5656 }
 
 @media (prefers-color-scheme: dark) {

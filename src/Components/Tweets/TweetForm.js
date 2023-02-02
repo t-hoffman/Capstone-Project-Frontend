@@ -4,11 +4,12 @@ import { Modal } from "react-bootstrap"
 import "../../css/Tweets.css"
 
 const TweetModal = ({ modal, show, setShow }) => {
-
-  return modal && (
+  const { token } = useContext(AuthContext)
+  
+  return token && modal && (
     <>
     <Modal show={show} onHide={() => setShow(!show)}>
-      <Modal.Header closeButton /* closeVariant="white" */ />
+      <Modal.Header closeButton />
       <Modal.Body>
         <TweetForm setShow={setShow} />
       </Modal.Body>
@@ -32,7 +33,9 @@ const TweetForm = ({ setShow }) => {
   }
 
   const handleSubmit = async (e) => {
+    e.preventDefault()
     setLoading(true)
+
     const options = {
       method: 'POST',
       headers: {
@@ -57,8 +60,8 @@ const TweetForm = ({ setShow }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo?.id])
 
-  return (
-    <div className="tweet-box">
+  return token && (
+    <div className="tweet-box" style={{borderTop:'none'}}>
       <div className="profile-icon">
         <img src={userImage} alt="Tweeter" />
       </div>

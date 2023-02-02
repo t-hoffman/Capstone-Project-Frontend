@@ -2,8 +2,8 @@ import React from 'react'
 
 const Explore = () => {
   return (
-    <div>
-      
+    <div className="p-3 mb-3">
+      <h4>Explore</h4>
     </div>
   )
 }

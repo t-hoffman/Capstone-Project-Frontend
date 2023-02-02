@@ -49,11 +49,20 @@ const SignInForm = ({ setToken, show, setShow }) => {
         {error && <span className="header-error"><b>User credentials  incorrect, please try again</b></span>}
           <div className="input-cont">
             Username
-            <input type="text" name="username" value={input.username} onChange={handleChange} />
+            <input type="text" 
+                   name="username" 
+                   value={input.username} 
+                   onChange={handleChange} 
+            />
           </div>
           <div className="input-cont">
             Password
-            <input type="password" name="password" value={input.password} onChange={handleChange} autoComplete="off" />
+            <input type="password" 
+                   name="password" 
+                   value={input.password} 
+                   onChange={handleChange} 
+                   autoComplete="off" 
+            />
           </div>
         </Modal.Body>
         <Modal.Footer>

@@ -1,31 +1,26 @@
-import AuthProvider from "Components/UserAuth/AuthContext";
-import Layout from "Layout/Layout";
-import Explore from "Pages/Explore";
-import Home from "Pages/Home";
-import Messages from "Pages/Messages";
-import Profile from "Pages/Profile";
-import Settings from "Pages/Settings";
-import SignIn from "Pages/SignIn";
-import SignOut from "Pages/SignOut";
-import SignUp from "Pages/SignUp";
+import { Explore, Home, Messages, Profile, SignIn, SignOut, SignUp, Tweet } from "Pages"
 import { Navigate, Route, Routes } from "react-router";
+import AuthProvider from "Components/UserAuth/AuthContext";
+import LayoutProvider from "Layout/LayoutContext";
+import { Settings } from "Pages";
 
 export default function App() {
   return (
     <AuthProvider>
-      <Layout>
+      <LayoutProvider>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile/" element={<Profile />} />
-          <Route path="/signin/" element={<SignIn />} />
+          <Route index element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings/*" element={<Settings />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/tweet/:id" element={<Tweet />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </Layout>
+      </LayoutProvider>
     </AuthProvider>
   )
 }

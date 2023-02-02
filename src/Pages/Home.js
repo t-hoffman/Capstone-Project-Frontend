@@ -2,7 +2,6 @@ import { TweetForm } from "Components/Tweets/TweetForm"
 import TweetList from "Components/Tweets/TweetList"
 
 const Home = () => {
-  
 
   return (
     <>
