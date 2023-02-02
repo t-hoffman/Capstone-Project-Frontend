@@ -86,14 +86,19 @@ a, a:visited, a:active {
 .tweet-icons .blue-icon, 
 .tweet-icons .pink-icon,
 .tweet-icons .green-icon { padding: 5px 8px; border-radius: 50%; margin-top: 5px; }
+.blue-count { color: #849099; font-weight: normal }
+.blue-icon:hover + .blue-count { color: #169cf1 }
+.green-count { color: #849099; font-weight: normal }
+.green-icon:hover + .green-count { color: #00ba7c }
+.pink-count { color: #849099; font-weight: normal }
+.pink-icon:hover + .pink-count { color: #f91980 }
+.tweet-icons svg { width: 15px; height: 15px; margin-top: -3px;}
+.tweet-icons { font-size: 10pt }
+
 .tweet-icons .blue-icon:hover {
   background-color: rgb(24, 158, 242, .15);
   filter: invert(61%) sepia(95%) saturate(4496%) hue-rotate(182deg) brightness(103%) contrast(90%);
 }
-
-.tweet-icons svg { width: 15px; height: 15px; margin-top: -3px;}
-.tweet-icons { font-size: 10pt }
-
 .tweet-icons .pink-icon:hover {
   background-color: rgb(249, 25, 128, .15);
   filter: invert(48%) sepia(99%) saturate(7387%) hue-rotate(321deg) brightness(99%) contrast(96%);

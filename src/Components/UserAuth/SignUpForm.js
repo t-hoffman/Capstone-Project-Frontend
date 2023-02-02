@@ -29,7 +29,6 @@ const SignUpForm = ({ show, setShow }) => {
       },
       body: JSON.stringify(input)
     }
-    console.log(input)
 
     const newUser = await (await fetch('/register', options)).json()
     const success = () => { setShow(!show); navigate('/profile') }

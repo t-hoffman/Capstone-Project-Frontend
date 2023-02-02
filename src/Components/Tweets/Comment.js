@@ -86,13 +86,13 @@ const CommentBox = ({ show, setShow, tweet }) => {
           <div className="content-right">
             <textarea type="text" 
                       name="content" 
-                      placeholder="What's happening?" 
+                      placeholder="Tweet your reply" 
                       onKeyUp={textAreaAdjust} 
                       onChange={({ target }) => setInput({comment: target.value})} 
                       value={input.comment}
             ></textarea>
             <div className="tweet-box justify-content-end" style={{borderTop:'none'}}>
-              <button className="tw-blue-btn-sm" onClick={handleSubmit}>Tweet</button>
+              <button className="tw-blue-btn-sm" onClick={handleSubmit}>Comment</button>
             </div>
           </div>
         </div>

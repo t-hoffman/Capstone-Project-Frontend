@@ -57,7 +57,7 @@ const TweetForm = ({ setShow }) => {
 
   useEffect(() => {
     if (userInfo?.id) setInput({...input, user_id: userInfo.id})
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [userInfo?.id])
 
   return token && (

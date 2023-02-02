@@ -7,7 +7,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (!token) return navigate('/signin')
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [token])
 
   return userInfo && (
