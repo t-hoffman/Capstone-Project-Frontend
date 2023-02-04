@@ -36,7 +36,7 @@ const TweetList = ({ profilePage }) => {
 }
 
 const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, setShow }) => {
-  const { token, update, setUpdate } = useContext(AuthContext)
+  const { token, update, setUpdate, navigate } = useContext(AuthContext)
   const userImage = user.image ? user.image : 'https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_x96.jpg'
 
   const formatDate = (date) => {
@@ -46,7 +46,7 @@ const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, 
 
     if (hours >= 24) {
       const days = Math.abs(Math.round(hours / 24))
-      return `${days}days`
+      return `${days} days`
     } else if (hours < 1) {
       const min = Math.abs(Math.round(hours*60))
       return `${min < 1 ? 1 : min}min`
@@ -74,13 +74,13 @@ const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, 
   return (
     <Link to={`/tweet/${id}`}>
       <div className="content-box" key={idx}>
-        <div className="profile-icon">
+        <div className="profile-icon" onClick={(e) => { e.preventDefault(); navigate(`/profile/${user.id}`) }}>
           <img src={userImage} alt="Tweeter" />
         </div>
         <div className="content-right">
-          <div>
+          <div onClick={(e) => { e.preventDefault(); navigate(`/profile/${user.id}`) }}>
             <b>{user.name}</b> &nbsp;
-            <span style={{color:'#849099',fontWeight:'normal'}}>@{user.username} - {formatDate(created_at)}</span>
+            <span style={{color:'#849099',fontWeight:'normal'}}>@{user.username} - <span style={{fontSize:'11pt'}}>{formatDate(created_at)}</span></span>
           </div>
           <div style={{color:'#849099'}}>
             {/* Replying to <span className="blue-link"><Link to="/">@BBCScienceNews</Link></span> */}

@@ -6,7 +6,12 @@
 }
 
 .tw-logo:hover { background-color: rgb(24, 158, 242, .15) }
-.nav-list a, .nav-list a:hover { color: black; text-decoration: none }
+.nav-list a, .nav-list a:hover {
+  color: black;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
 .nav-list svg, .nav-list img { width: 25px; margin: -5px 10px 0 0 }
 .nav-list { margin-top: 15px; list-style: none }
 

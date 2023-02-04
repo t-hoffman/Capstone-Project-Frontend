@@ -7,10 +7,21 @@ export const AuthContext = React.createContext()
 const AuthProvider = ({ children }) => {
   const { token, setToken, deleteToken, userInfo, setUserInfo, navigate } = useToken()
   const [update, setUpdate] = useState(false)
-  let location = useLocation().pathname.split('/') 
+  const location = useLocation().pathname.split('/') 
+  const value = {
+    token,
+    setToken,
+    deleteToken,
+    userInfo,
+    setUserInfo,
+    navigate,
+    update,
+    setUpdate,
+    location
+  }
 
   return (
-    <AuthContext.Provider value={{token, setToken, deleteToken, userInfo, setUserInfo, navigate, update, setUpdate, location}}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   )

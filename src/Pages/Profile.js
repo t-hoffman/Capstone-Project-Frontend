@@ -1,12 +1,14 @@
 import TweetList from 'Components/Tweets/TweetList'
 import { AuthContext } from 'Components/UserAuth/AuthContext'
 import { useContext, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 const Profile = () => {
   const { token, deleteToken, userInfo, navigate } = useContext(AuthContext)
+  const { id } = useParams()
 
   useEffect(() => {
-    if (!token) return navigate('/signin')
+    if (!id && !token) return navigate('/signin')
     // eslint-disable-next-line
   }, [token])
 

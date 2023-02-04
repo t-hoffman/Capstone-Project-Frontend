@@ -1,6 +1,5 @@
 
 import { AuthContext } from "Components/UserAuth/AuthContext"
-import { LayoutContext } from "Layout/LayoutContext"
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "../css/Settings.css"
@@ -36,8 +35,7 @@ const SettingsRightBar = () => {
 }
 
 const SettingsForm = ({ type }) => {
-  const { userInfo, token, setUserInfo } = useContext(AuthContext)
-  const { location } = useContext(LayoutContext)
+  const { userInfo, token, setUserInfo, location } = useContext(AuthContext)
   const [input, setInput] = useState({ [type]: '' })
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
