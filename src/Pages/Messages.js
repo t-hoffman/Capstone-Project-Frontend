@@ -6,20 +6,20 @@ import socketio from "socket.io-client";
 const socket = socketio.connect('http://127.0.0.1:5000')
 
 const Messages = () => {
-  const { token, userInfo } = useContext(AuthContext)
-  const [update, setUpdate] = useState(false)
+  const { token, userInfo, update } = useContext(AuthContext)
+  // const [update, setUpdate] = useState(false)
   const [messages, setMessages] = useState([])
 
-  const sendMessage = () => {
-    socket.emit('message', userInfo.id)
-  }
+  // const sendMessage = () => {
+  //   socket.emit('message', userInfo.id)
+  // }
 
-  useEffect(() => {
-    const sendMessage = () => setUpdate(update => !update)
-    socket.on('message', sendMessage)
+  // useEffect(() => {
+  //   const sendMessage = () => setUpdate(update => !update)
+  //   socket.on('message', sendMessage)
 
-    return () => socket.off('message', sendMessage)
-  }, [socket, update])
+  //   return () => socket.off('message', sendMessage)
+  // }, [socket, update])
   
   
   const getMessages = async () => {
@@ -36,7 +36,7 @@ const Messages = () => {
 
   useEffect(() => {
     if (userInfo) getMessages()
-  }, [userInfo])
+  }, [userInfo, update])
 
   return messages && (
     // <button onClick={sendMessage}>Send</button>

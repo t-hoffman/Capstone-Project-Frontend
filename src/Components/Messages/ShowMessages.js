@@ -6,8 +6,7 @@ import socketio from "socket.io-client";
 const socket = socketio.connect('http://127.0.0.1:5000')
 
 const ShowMessages = () => {
-  const { token, userInfo } = useContext(AuthContext)
-  const [update, setUpdate] = useState(false)
+  const { token, userInfo, update, setUpdate } = useContext(AuthContext)
   const [messages, setMessages] = useState(null)
   const [input, setInput] = useState({ message: '' })
   const params = useParams()
@@ -21,9 +20,7 @@ const ShowMessages = () => {
     socket.on('message', sendMessage)
 
     return () => socket.off('message', sendMessage)
-  }, [socket, update])
-
-
+  }, [socket])
 
 
 
@@ -35,10 +32,13 @@ const ShowMessages = () => {
         'Authorization': 'Bearer ' + token
       }
     }
+
     const data = await (await fetch(`/messages/${userInfo.id}/${params.user_id}`, options)).json()
+    data.sort((a, b) => {
+      return new Date(a.created_at) - new Date(b.created_at) 
+    })
 
     setMessages(data)
-    console.log(`/messages/${userInfo.id}/${params.user_id}`)
   }
 
   const handleChange = (e) => {
@@ -62,14 +62,18 @@ const ShowMessages = () => {
 
   useEffect(() => {
     if (userInfo) getMessages()
-  }, [userInfo, params, update])
+  }, [userInfo, params])
+
+  useEffect(() => {
+    setUpdate(!update)
+  }, [messages?.length])
   
   return messages && (
     <div>
       <ul>
         {
-          messages.receiver.messages.map((message, idx) => (
-            <li key={idx}><b>{messages.receiver.name}:</b><br />{message.message}</li>
+          messages.map((message, idx) => (
+            <li key={idx}><b>{message.sender.name}:</b><br />{message.message}<br /> {message.created_at}</li>
           ))
         }
       </ul>
