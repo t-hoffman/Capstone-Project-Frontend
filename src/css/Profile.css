@@ -17,9 +17,9 @@
   bottom: 0;
   left: 20px;
   border-radius: 50%;
-  border: 4px solid #000;
+  border: 4px solid #fff;
   cursor: pointer;
-  background-color: #000;
+  background-color: #fff;
 }
 
 .profile-avatar:hover + .overlay {
@@ -30,13 +30,11 @@
   left: 24px;
   background-color: #000;
   border-radius: 50%;
-  opacity: 15%;
+  opacity: 10%;
   -webkit-backface-visibility: hidden;
 }
 
-.profile-avatar img {
-  border-radius: 50%;
-}
+.profile-avatar img { border-radius: 50% }
 
 .profile-bottom {
   width: 100%;
@@ -52,17 +50,29 @@
   left: 10px;
   top: 10px;
   width: 20px;
-  filter: invert(97%) sepia(100%) saturate(2%) hue-rotate(266deg) brightness(112%) contrast(100%);
 }
 
 .prof-button {
   width: 25px;
   height: 25px;
-  border: 1px solid #2B3135;
+  border: 1px solid #E4E9EB;
   border-radius: 50%;
   padding: 20px;
   position: relative;
   cursor: pointer;
 }
 
-.prof-button:hover { background-color: #111111 }
+.prof-button:hover { background-color: #EAEAEA }
+
+@media (prefers-color-scheme: dark) {
+  .profile-avatar {
+    border: 4px solid #000;
+    background-color: #000;
+  }
+
+  .profile-bottom svg { 
+    filter: invert(97%) sepia(100%) saturate(2%) hue-rotate(266deg) brightness(112%) contrast(100%);
+  }
+  .prof-button { border: 1px solid #2B3135 }
+  .prof-button:hover { background-color: #151515 } 
+}

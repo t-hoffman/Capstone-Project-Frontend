@@ -43,7 +43,11 @@ a, a:visited, a:active {
   z-index: 1;
 }
 
-.left-bar { width: 23%; border-right: 1px solid #EFF3F4 }
+.left-bar {
+  width: 23%;
+  position: relative;
+  border-right: 1px solid #EFF3F4;
+}
 .middle-bar {
   width: 60%;
   max-height: 100vh;
@@ -58,6 +62,9 @@ a, a:visited, a:active {
   position: relative;
 }
 
+.right-bar::-webkit-scrollbar,
+.middle-bar::-webkit-scrollbar { display: none }
+
 .right-side {
   width: 77%;
   display: flex;
@@ -71,6 +78,7 @@ a, a:visited, a:active {
 
 .content-box { cursor: pointer }
 .content-box:hover { background-color: #F8F8F8 }
+.modal .content-box:hover {background-color: transparent }
 
 .content-box a, .tweet-box a {
   color: black;

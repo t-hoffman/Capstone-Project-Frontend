@@ -1,14 +1,15 @@
 import { TweetModal } from "Components/Tweets/TweetForm"
-import { useContext, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { useContext, useEffect, useRef, useState } from "react"
+import { Navigate, NavLink } from "react-router-dom"
 import settingsIcon from "../../assets/settings.png"
 import settingsIconActive from "../../assets/settingsActive.png"
 import { AuthContext } from "Components/UserAuth/AuthContext"
 import "../../css/NavBar.css"
 
 const NavBar = () => {
-  const { token } = useContext(AuthContext)
+  const { token, userInfo, defaultImage, navigate } = useContext(AuthContext)
   const [show, setShow] = useState(false)
+  const [more, setMore] = useState(false)
 
   const navItems = [
     {
@@ -41,7 +42,22 @@ const NavBar = () => {
       icon: <img src={settingsIcon} alt="Settings" />,
       activeicon: <img src={settingsIconActive} alt="Settings" />
     }
-  ]
+  ]  
+
+  const userImage = userInfo?.image ? userInfo.image : defaultImage
+  const navUserInfo = useRef()
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (navUserInfo.current && !navUserInfo.current.contains(e.target)) {
+        setMore(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <>
@@ -59,7 +75,33 @@ const NavBar = () => {
     <div className="d-flex w-100 justify-content-center mt-4">
       {token && <button className="tw-blue-btn-lg" onClick={() => setShow(!show)}>Tweet</button>}
     </div>
+    
     <TweetModal show={show} setShow={setShow} modal={true} />
+
+    {
+      token && (
+        <div className="nav-user-info-cont" ref={navUserInfo}>
+          <div className="nav-user-open"
+              style={more ? {display:'block'} : {display:'none'}}
+              onClick={() => { setMore(false); navigate('/signout') }}
+          >
+            <b>Log out @{userInfo?.username}</b>
+          </div>
+          <div className="nav-user-info" id="nav-user-button" onClick={() => setMore(!more)}>
+            <div className="profile-icon">
+              <img src={userImage} alt="Tweeter" />
+            </div>
+            <div style={{wordWrap:'break-word'}}>
+              <b>{userInfo?.name}</b><br />
+              <span style={{color:'#849099'}}>@{userInfo?.username}</span>
+            </div>
+            <div className="nav-user-more w-100">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+            </div>
+          </div>
+        </div>
+      )
+    }
     </>
   )
 }

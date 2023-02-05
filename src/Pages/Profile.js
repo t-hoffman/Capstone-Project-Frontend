@@ -43,11 +43,11 @@ const Profile = () => {
           </span>
         </div>
       </div>
-      <div className="content-box flex-column">
-        <b>Email:</b> {data.email}<br />
-        <b>Username:</b> {data.username}<br />
-        <button onClick={deleteToken}>Sign out</button>
+      <div className="ps-3 pt-3 pb-3">
+        <h5 style={{margin:'0'}}>{data.name}</h5>
+        <span style={{color:'#849099'}}>@{data.username}<br />{data.email}</span>
       </div>
+
       <TweetList profilePage={true} id={data.id} />
     </>
   )
