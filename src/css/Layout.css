@@ -34,6 +34,7 @@ a, a:visited, a:active {
 
 .main-container {
   width: 75%;
+  max-width: 1300px;
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
