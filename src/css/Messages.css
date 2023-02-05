@@ -1,0 +1,74 @@
+.messages-header {
+  width: 100%;
+  padding: 5em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.messages-header:hover { background-color: #F8F8F8 }
+
+.message-recipient {
+  color: #849099;
+  width: 100%;
+  padding: 15px;
+  font-size: 10pt;
+}
+
+.message-sender {
+  color: #849099;
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 10pt;
+}
+
+.message-bubble {
+  color: white;
+  padding: 10px;
+  border-radius: 50px 50px 10px 50px;
+  width: fit-content;
+  background-color: #1d9bf0;
+  font-size: 12pt;
+}
+
+.message-recipient .message-bubble {
+  background-color: #2F3336;
+  border-radius: 50px 50px 50px 10px;
+}
+
+.message-form {
+  padding: 10px;
+  border-top: 1px solid #2F3336;
+  position: relative;
+}
+
+.message-form-input {
+  width: 100%;
+  display: flex;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background-color: #202327;
+}
+
+.message-form-input svg { 
+  width: 20px; 
+  fill: rgb(29, 155, 240, .6);
+  cursor: pointer;
+}
+
+.message-form input {
+  width: 100%;
+  outline: none;
+  color: #6e7175;
+  border: none;
+  background-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .messages-header:hover { background-color: #16181C }
+}

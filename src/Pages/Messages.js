@@ -3,25 +3,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import socketio from "socket.io-client";
 
+// eslint-disable-next-line
 const socket = socketio.connect('http://127.0.0.1:5000')
 
 const Messages = () => {
   const { token, userInfo, update } = useContext(AuthContext)
-  // const [update, setUpdate] = useState(false)
   const [messages, setMessages] = useState([])
 
-  // const sendMessage = () => {
-  //   socket.emit('message', userInfo.id)
-  // }
-
-  // useEffect(() => {
-  //   const sendMessage = () => setUpdate(update => !update)
-  //   socket.on('message', sendMessage)
-
-  //   return () => socket.off('message', sendMessage)
-  // }, [socket, update])
-  
-  
   const getMessages = async () => {
     const options = {
       method: 'GET',
@@ -36,6 +24,7 @@ const Messages = () => {
 
   useEffect(() => {
     if (userInfo) getMessages()
+    // eslint-disable-next-line
   }, [userInfo, update])
 
   return messages && (

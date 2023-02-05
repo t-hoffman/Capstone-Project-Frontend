@@ -12,32 +12,35 @@ const Layout = ({ children }) => {
   const { location } = useContext(AuthContext)
   const optionalStyling = ['settings', 'messages']
                           .includes(location[1])
-  const divStyle = optionalStyling && 'settings-middle-bar'
+  const middleStyle = optionalStyling && 'settings-middle-bar',
+        rightStyle = optionalStyling && 'settings-right-bar'
 
   return (
     <>
-      <div className="d-flex w-75 m-auto z1">
+      <div className="main-container">
         <Header />
-        <div className={`middle-bar ${divStyle}`}>
-          {children}
-        </div>
-        <div className={`right-bar ${divStyle}`}>
-          {!optionalStyling && <SearchBar />}
-          <Routes>
-            <Route path="/settings">
-              <Route index element={<SettingsRightBar />} />
-              <Route path="username" element={<SettingsForm type="username" />} />
-              <Route path="name" element={<SettingsForm type="name" />} />
-              <Route path="email" element={<SettingsForm type="email" />} />
-              <Route path="password" element={<SettingsForm type="password" />} />
-              <Route path="*" element={<Navigate to="/settings" />} />
-            </Route>
-            <Route path="/messages">
-              <Route index element={<Outlet />} />
-              <Route path=":user_id" element={<ShowMessages />} />
-            </Route>
-            <Route path="*" element={<Outlet />} />
-          </Routes>
+        <div className="right-side">
+          <div className={`middle-bar ${middleStyle}`}>
+            {children}
+          </div>
+          <div className={`right-bar ${rightStyle}`}>
+            {!optionalStyling && <SearchBar />}
+            <Routes>
+              <Route path="/settings">
+                <Route index element={<SettingsRightBar />} />
+                <Route path="username" element={<SettingsForm type="username" />} />
+                <Route path="name" element={<SettingsForm type="name" />} />
+                <Route path="email" element={<SettingsForm type="email" />} />
+                <Route path="password" element={<SettingsForm type="password" />} />
+                <Route path="*" element={<Navigate to="/settings" />} />
+              </Route>
+              <Route path="/messages">
+                <Route index element={<Outlet />} />
+                <Route path=":user_id" element={<ShowMessages />} />
+              </Route>
+              <Route path="*" element={<Outlet />} />
+            </Routes>
+          </div>
         </div>
       </div>
       <Footer />

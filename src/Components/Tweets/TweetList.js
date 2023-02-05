@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import CommentBox from "./Comment";
 
 const TweetList = ({ profilePage }) => {
-  const { userInfo, update } = useContext(AuthContext)
+  const { userInfo, update, defaultImage } = useContext(AuthContext)
   const [data, setData] = useState(null)
   const [show, setShow] = useState(false)
   const [tweet, setTweet] = useState(null)
@@ -22,7 +22,7 @@ const TweetList = ({ profilePage }) => {
 
   const iterateTweets = () => {
     const tweets = data.tweets ? data.tweets : data;
-    const showTweets = tweets.map((tweet, idx) => (<Tweet {...tweet} idx={idx} key={idx} setTweet={setTweet} setShow={setShow} />))
+    const showTweets = tweets.map((tweet, idx) => (<Tweet {...tweet} idx={idx} key={idx} setTweet={setTweet} setShow={setShow} defaultImage={defaultImage} />))
 
     return (
       <>
@@ -35,9 +35,9 @@ const TweetList = ({ profilePage }) => {
   return data && (data.tweets?.length > 0 || data.length > 0) && iterateTweets();
 }
 
-const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, setShow }) => {
+const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, setShow, defaultImage }) => {
   const { token, update, setUpdate, navigate } = useContext(AuthContext)
-  const userImage = user.image ? user.image : 'https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_x96.jpg'
+  const userImage = user.image ? user.image : defaultImage
 
   const formatDate = (date) => {
     const now = new Date().getTime()

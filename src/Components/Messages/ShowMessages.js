@@ -1,28 +1,18 @@
 import { AuthContext } from 'Components/UserAuth/AuthContext'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import socketio from "socket.io-client";
+import '../../css/Messages.css'
 
-const socket = socketio.connect('http://127.0.0.1:5000')
+const socket = socketio.connect()
 
 const ShowMessages = () => {
-  const { token, userInfo, update, setUpdate } = useContext(AuthContext)
+  const { token, userInfo, update, setUpdate, defaultImage } = useContext(AuthContext)
   const [messages, setMessages] = useState(null)
+  const [data, setData] = useState(null)
   const [input, setInput] = useState({ message: '' })
   const params = useParams()
-
-  const sendMessage = () => {
-    socket.emit('message', userInfo.id)
-  }
-
-  useEffect(() => {
-    const sendMessage = () => setUpdate(update => !update)
-    socket.on('message', sendMessage)
-
-    return () => socket.off('message', sendMessage)
-  }, [socket])
-
-
+  const messagesRef = useRef()
 
   const getMessages = async () => {
     const options = {
@@ -34,11 +24,17 @@ const ShowMessages = () => {
     }
 
     const data = await (await fetch(`/messages/${userInfo.id}/${params.user_id}`, options)).json()
-    data.sort((a, b) => {
+    data.messages.sort((a, b) => {
       return new Date(a.created_at) - new Date(b.created_at) 
     })
 
-    setMessages(data)
+    const userOne = data.users[0].id,
+          to = userOne === userInfo.id ? 0 : 1,
+          from = userOne === userInfo.id ? 1 : 0,
+          usersInfo = { to: data.users[to], from: data.users[from] }
+
+    setMessages(data.messages)
+    setData(usersInfo)
   }
 
   const handleChange = (e) => {
@@ -48,6 +44,9 @@ const ShowMessages = () => {
   }
 
   const handleSubmit = async (e) => {
+    e.preventDefault()
+    socket.emit('message', userInfo.id)
+
     const options = {
       method: 'POST',
       headers: {
@@ -58,28 +57,67 @@ const ShowMessages = () => {
     }
     const newMessage = await (await fetch('/messages', options)).json()
     console.log(newMessage)
+    setInput({ message: '' })
   }
 
   useEffect(() => {
     if (userInfo) getMessages()
+    messagesRef.current?.scrollIntoView({ behavior: 'smooth' })
+    // eslint-disable-next-line
   }, [userInfo, params])
 
   useEffect(() => {
+    const sendMessage = () => setUpdate(update => !update)
+    
+    socket.on('message', sendMessage)
     setUpdate(!update)
+
+    return () => socket.off('message', sendMessage)
+    // eslint-disable-next-line
   }, [messages?.length])
   
+  const userImage = data?.from.image ? data?.from.image : defaultImage
+  
   return messages && (
-    <div>
-      <ul>
-        {
-          messages.map((message, idx) => (
-            <li key={idx}><b>{message.sender.name}:</b><br />{message.message}<br /> {message.created_at}</li>
-          ))
-        }
-      </ul>
-      <input type="text" name="message" value={input.message} onChange={handleChange} />
-      <button type="submit" onClick={() => { sendMessage(); handleSubmit(); }}>Submit ({update ? 'true' : 'false'})</button>
-    </div>
+    <>
+      <div className="messages-header">
+        <div className="profile-icon">
+          <img src={userImage} alt="Tweeter" />
+        </div>
+        <div className="mt-3">{data.from.name}</div>
+        <div style={{color:'#849099'}}>@{data.from.username}</div>
+      </div>
+      <div id="messages-list">
+          {
+            messages.map((message, idx) => {
+              const divClass = message.sender.id !== userInfo.id ? 'message-recipient' : 'message-sender',
+                    date = new Date(message.created_at),
+                    options = { weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: true },
+                    formattedDate = date.toLocaleDateString('en-US', options)
+
+              return (
+                <div className={divClass} key={idx}>
+                  <div className="message-bubble">{message.message}</div>
+                  <div className="mt-2">{formattedDate}</div>
+                </div>
+              )
+            })
+          }
+        <div className="message-form">
+          <div className="message-form-input">
+            <div className="w-100">
+              <form onSubmit={handleSubmit} autoComplete="off">
+                <input type="text" name="message" value={input.message} onChange={handleChange} />
+              </form>
+            </div>
+            <div onClick={handleSubmit}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M2.504 21.866l.526-2.108C3.04 19.719 4 15.823 4 12s-.96-7.719-.97-7.757l-.527-2.109L22.236 12 2.504 21.866zM5.981 13c-.072 1.962-.34 3.833-.583 5.183L17.764 12 5.398 5.818c.242 1.349.51 3.221.583 5.183H10v2H5.981z"></path></g></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ref={messagesRef} />
+    </>
   )
 }
 

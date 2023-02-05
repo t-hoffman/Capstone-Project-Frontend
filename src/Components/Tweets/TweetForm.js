@@ -19,13 +19,13 @@ const TweetModal = ({ modal, show, setShow }) => {
 }
 
 const TweetForm = ({ setShow }) => {
-  const { token, userInfo, navigate, update, setUpdate } = useContext(AuthContext)
+  const { token, userInfo, navigate, update, setUpdate, defaultImage } = useContext(AuthContext)
   const [input, setInput] = useState({ content: '', retweet_id: null })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const loader = loading ? {display: 'inline-block'} : {display: 'none'}
   const button = loading ? {display: 'none'} : {display: 'block'}
-  const userImage = userInfo?.image ? userInfo.image : 'https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_x96.jpg'
+  const userImage = userInfo?.image ? userInfo.image : defaultImage
 
   const textAreaAdjust = (e) => {
     e.target.style.height = '1px'
