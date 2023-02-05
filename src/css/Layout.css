@@ -126,8 +126,23 @@ a, a:visited, a:active {
 .green-icon:hover + .green-count { color: #00ba7c }
 .pink-count { color: #849099; font-weight: normal }
 .pink-icon:hover + .pink-count { color: #f91980 }
-.tweet-icons svg { width: 15px; height: 15px; margin-top: -3px;}
+.tweet-icons svg { width: 15px; height: 15px; margin-top: -3px; line-height: 15px }
 .tweet-icons { font-size: 10pt }
+
+#tweet.tweet-icons { width: 100%; align-items: stretch }
+#tweet.tweet-icons > div { flex:1 }
+#tweet.tweet-icons div {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+#tweet.tweet-icons svg {
+  width: 40px;
+  height: 40px;
+  line-height: 25px;
+  padding: 10px;
+  margin-top: 0;
+}
 
 .tweet-icons .blue-icon:hover {
   background-color: rgb(24, 158, 242, .15);
@@ -190,7 +205,7 @@ a, a:visited, a:active {
   }
 }
 
-.blue-link a {
+.blue-link a, .blue-link {
   color: #169cf1;
   font-weight: normal;
 }

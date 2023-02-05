@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Modal } from "react-bootstrap"
 import { Link } from "react-router-dom";
 
-const CommentBox = ({ show, setShow, tweet }) => {
+const CommentBox = ({ show, setShow, tweet, update, setUpdate }) => {
   const { token, userInfo, navigate } = useContext(AuthContext)
   const defaultImage = 'https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_x96.jpg'
   const userImage = userInfo?.image ? userInfo.image : defaultImage
@@ -34,7 +34,7 @@ const CommentBox = ({ show, setShow, tweet }) => {
 
     setShow(false)
     setInput({ comment: '' })
-    navigate(`/tweet/${tweet.id}`)
+    setUpdate ? setUpdate(!update) : navigate(`/tweet/${tweet.id}`)
   }
 
   const formatDate = (date) => {

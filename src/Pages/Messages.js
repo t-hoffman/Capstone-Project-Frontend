@@ -19,6 +19,23 @@ const Messages = () => {
       }
     }
     const data = await (await fetch(`/messages/${userInfo.id}`, options)).json()
+    let nonMatches = []
+    const filterMessages = (user, idx, arr) => {console.log('hi')
+      if (user.id === userInfo.id) {
+        user.messages.map(async (message) => {
+          const getUser = await (await fetch(`/users/${message.recipient_id}`)).json()
+          nonMatches.push(getUser)
+        })
+        
+        return false
+      }
+
+      return true
+    }
+
+    const other = data.filter(filterMessages)
+    console.log(nonMatches)
+
     setMessages(data)
   }
 

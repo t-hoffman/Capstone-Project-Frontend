@@ -58,15 +58,15 @@ const SignUpForm = ({ show, setShow }) => {
           {error && <span className="header-error">{displayError[error]}</span>}
           <div className="input-cont">
             Name
-            <input type="text" name="name" value={input.name} onChange={handleChange} /><br />
+            <input type="text" name="name" value={input.name} onChange={handleChange} autoComplete="off" /><br />
           </div>
           <div className={`input-cont ${error === 1 && `input-error`}`}>
             Email
-            <input type="text" name="email" value={input.email} onChange={handleChange} /><br />
+            <input type="text" name="email" value={input.email} onChange={handleChange} autoComplete="off" /><br />
           </div>
           <div className={`input-cont ${error === 2 && `input-error`}`}>
             Username
-            <input type="text" name="username" value={input.username} onChange={handleChange} />
+            <input type="text" name="username" value={input.username} onChange={handleChange} autoComplete="off" />
           </div>
           <div className={`input-cont ${error === 4 && `input-error`}`}>
             Password

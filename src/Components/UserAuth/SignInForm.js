@@ -51,6 +51,7 @@ const SignInForm = ({ setToken, show, setShow }) => {
             Username
             <input type="text" 
                    name="username" 
+                   autoComplete="off"
                    value={input.username} 
                    onChange={handleChange} 
             />
