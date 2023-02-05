@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import '../css/Profile.css'
 
 const Profile = () => {
-  const { token, deleteToken, userInfo, navigate, defaultImage, defaultBanner } = useContext(AuthContext)
+  const { token, userInfo, navigate, defaultImage, defaultBanner } = useContext(AuthContext)
   const { id } = useParams()
   const [data, setData] = useState(null)
 

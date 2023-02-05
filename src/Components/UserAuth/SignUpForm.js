@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Modal } from 'react-bootstrap'
+import { AuthContext } from './AuthContext'
 
 const SignUpForm = ({ show, setShow }) => {
-  const initialState = { name: '', email: '', username: '', password: '', passwordCheck: '', image: '' }
+  const { navigate } = useContext(AuthContext)
+  const initialState = { name: '', email: '', username: '', password: '', passwordCheck: '', image: '', banner: '' }
   const [input, setInput] = useState(initialState)
   const [error, setError] = useState(false)
-  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +19,7 @@ const SignUpForm = ({ show, setShow }) => {
     e.preventDefault()
     const { password, passwordCheck } = input;
     
-    for (let key in input) { if (input[key].length <= 0 && key !== 'image') return setError(3) }
+    for (let key in input) { if (input[key].length <= 0 && key !== 'image' && key !== 'banner') return setError(3) }
 
     if (password !== passwordCheck) return setError(4)
 
@@ -31,7 +32,13 @@ const SignUpForm = ({ show, setShow }) => {
     }
 
     const newUser = await (await fetch('/register', options)).json()
-    const success = () => { setShow(!show); navigate('/profile') }
+    
+    const success = async () => {
+      setInput(initialState)
+      setShow(!show);
+      navigate('/signin/');
+    }
+
     newUser['message'] ? success() : setError(newUser['code'])
   }
 
@@ -77,8 +84,12 @@ const SignUpForm = ({ show, setShow }) => {
             <input type="password" name="passwordCheck" value={input.passwordCheck} onChange={handleChange} autoComplete="off" />
           </div>
           <div className="input-cont">
-            Photo
+            Photo URL
             <input type="text" name="image" value={input.image} onChange={handleChange} autoComplete="off" />
+          </div>
+          <div className="input-cont">
+            Banner URL
+            <input type="text" name="banner" value={input.banner} onChange={handleChange} autoComplete="off" />
           </div>
         </Modal.Body>
         <Modal.Footer>
