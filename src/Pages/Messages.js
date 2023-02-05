@@ -1,6 +1,6 @@
 import { AuthContext } from "Components/UserAuth/AuthContext";
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import socketio from "socket.io-client";
 
 // eslint-disable-next-line
@@ -19,21 +19,6 @@ const Messages = () => {
       }
     }
     const data = await (await fetch(`/messages/${userInfo.id}`, options)).json()
-    // let nonMatches = []
-    // const filterMessages = (user, idx, arr) => {console.log('hi')
-    //   if (user.id === userInfo.id) {
-    //     user.messages.map(async (message) => {
-    //       const getUser = await (await fetch(`/users/${message.recipient_id}`)).json()
-    //       nonMatches.push(getUser)
-    //     })
-        
-    //     return false
-    //   }
-
-    //   return true
-    // }
-
-    // const other = data.filter(filterMessages)
 
     setMessages(data)
   }
@@ -45,7 +30,6 @@ const Messages = () => {
   }, [userInfo, update])
 
   return messages && (
-    // <button onClick={sendMessage}>Send</button>
     <>
       <div className="p-3 mb-3"><h4>Messages</h4></div>
       <ul>

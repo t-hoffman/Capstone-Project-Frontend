@@ -1,6 +1,6 @@
 import { TweetModal } from "Components/Tweets/TweetForm"
 import { useContext, useEffect, useRef, useState } from "react"
-import { Navigate, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import settingsIcon from "../../assets/settings.png"
 import settingsIconActive from "../../assets/settingsActive.png"
 import { AuthContext } from "Components/UserAuth/AuthContext"

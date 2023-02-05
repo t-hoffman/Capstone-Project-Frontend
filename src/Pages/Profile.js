@@ -33,7 +33,7 @@ const Profile = () => {
       <div className="profile-banner">
         <div className="profile-banner-top" style={{backgroundImage:`url(${bannerImage})`}}>
           <div className="profile-avatar">
-            <img src={profileImage} width="133.5px" />
+            <img src={profileImage} alt={data.username} />
           </div>
           <div className="overlay"></div>
         </div>

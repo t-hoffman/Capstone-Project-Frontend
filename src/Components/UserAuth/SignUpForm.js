@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Modal } from 'react-bootstrap'
 import { AuthContext } from './AuthContext'
 

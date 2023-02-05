@@ -34,7 +34,7 @@
   -webkit-backface-visibility: hidden;
 }
 
-.profile-avatar img { border-radius: 50% }
+.profile-avatar img { border-radius: 50%; width: 133.5px  }
 
 .profile-bottom {
   width: 100%;
