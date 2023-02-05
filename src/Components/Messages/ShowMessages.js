@@ -7,7 +7,7 @@ import '../../css/Messages.css'
 const socket = socketio.connect()
 
 const ShowMessages = () => {
-  const { token, userInfo, update, setUpdate, defaultImage } = useContext(AuthContext)
+  const { token, userInfo, navigate, update, setUpdate, defaultImage } = useContext(AuthContext)
   const [messages, setMessages] = useState(null)
   const [data, setData] = useState(null)
   const [input, setInput] = useState({ message: '' })
@@ -55,8 +55,8 @@ const ShowMessages = () => {
       },
       body: JSON.stringify({...input, recipient_id: params.user_id})
     }
-    const newMessage = await (await fetch('/messages', options)).json()
-    console.log(newMessage)
+    if (input.message.length > 0) await fetch('/messages', options)
+
     setInput({ message: '' })
   }
 
@@ -76,11 +76,11 @@ const ShowMessages = () => {
     // eslint-disable-next-line
   }, [messages?.length])
   
-  const userImage = data?.from.image ? data?.from.image : defaultImage
-  
-  return messages && (
+  const userImage = data && data.from?.image ? data.from.image : defaultImage
+
+  return data && data.from ? (
     <>
-      <div className="messages-header">
+      <div className="messages-header" onClick={() => navigate(`/profile/${params.user_id}`)}>
         <div className="profile-icon">
           <img src={userImage} alt="Tweeter" />
         </div>
@@ -89,7 +89,7 @@ const ShowMessages = () => {
       </div>
       <div id="messages-list">
           {
-            messages.map((message, idx) => {
+            messages.length > 0 ? messages.map((message, idx) => {
               const divClass = message.sender.id !== userInfo.id ? 'message-recipient' : 'message-sender',
                     date = new Date(message.created_at),
                     options = { weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: true },
@@ -101,7 +101,7 @@ const ShowMessages = () => {
                   <div className="mt-2">{formattedDate}</div>
                 </div>
               )
-            })
+            }) : <h4 className="pb-5">No messsages yet</h4>
           }
         <div className="message-form">
           <div className="message-form-input">
@@ -111,14 +111,16 @@ const ShowMessages = () => {
               </form>
             </div>
             <div onClick={handleSubmit}>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M2.504 21.866l.526-2.108C3.04 19.719 4 15.823 4 12s-.96-7.719-.97-7.757l-.527-2.109L22.236 12 2.504 21.866zM5.981 13c-.072 1.962-.34 3.833-.583 5.183L17.764 12 5.398 5.818c.242 1.349.51 3.221.583 5.183H10v2H5.981z"></path></g></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <g><path d="M2.504 21.866l.526-2.108C3.04 19.719 4 15.823 4 12s-.96-7.719-.97-7.757l-.527-2.109L22.236 12 2.504 21.866zM5.981 13c-.072 1.962-.34 3.833-.583 5.183L17.764 12 5.398 5.818c.242 1.349.51 3.221.583 5.183H10v2H5.981z"></path></g>
+              </svg>
             </div>
           </div>
         </div>
       </div>
       <div ref={messagesRef} />
     </>
-  )
+  ) : (data && <h4 className="p-3">No messages found</h4>)
 }
 
 export default ShowMessages

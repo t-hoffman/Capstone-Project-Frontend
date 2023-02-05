@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 import CommentBox from "./Comment";
 
-const TweetList = ({ profilePage }) => {
+const TweetList = ({ profilePage, id }) => {
   const { userInfo, update, defaultImage } = useContext(AuthContext)
   const [data, setData] = useState(null)
   const [show, setShow] = useState(false)
@@ -11,7 +11,7 @@ const TweetList = ({ profilePage }) => {
 
   useEffect(() => {
     const getTweets = async () => {
-      const query = profilePage ? `/${userInfo.id}` : ''
+      const query = profilePage ? `/${id}` : ''
       const tweets = await (await fetch(`/tweets${query}`)).json()
       setData(tweets)
     }
@@ -21,8 +21,9 @@ const TweetList = ({ profilePage }) => {
   }, [userInfo?.id, update])
 
   const iterateTweets = () => {
-    const tweets = data.tweets ? data.tweets : data;
-    const showTweets = tweets.map((tweet, idx) => (<Tweet {...tweet} idx={idx} key={idx} setTweet={setTweet} setShow={setShow} defaultImage={defaultImage} />))
+    const tweets = data.tweets ? data.tweets : data,
+          showTweets = tweets.map((tweet, idx) => 
+          (<Tweet {...tweet} idx={idx} key={idx} setTweet={setTweet} setShow={setShow} defaultImage={defaultImage} />))
 
     return (
       <>
