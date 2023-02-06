@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import socketio from "socket.io-client";
 import '../../css/Messages.css'
 
-const socket = socketio.connect()
+// const socket = socketio.connect()
 
 const ShowMessages = () => {
   const { token, userInfo, navigate, update, setUpdate, defaultImage } = useContext(AuthContext)
@@ -13,6 +13,7 @@ const ShowMessages = () => {
   const [input, setInput] = useState({ message: '' })
   const params = useParams()
   const messagesRef = useRef()
+  const [manual, setManual] = useState(false)
 
   const getMessages = async () => {
     const options = {
@@ -45,7 +46,7 @@ const ShowMessages = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    socket.emit('message', userInfo.id)
+    // socket.emit('message', userInfo.id)
 
     const options = {
       method: 'POST',
@@ -58,23 +59,24 @@ const ShowMessages = () => {
     if (input.message.length > 0) await fetch('/messages', options)
 
     setInput({ message: '' })
+    setManual(!manual)
   }
 
   useEffect(() => {
     if (userInfo) getMessages()
     messagesRef.current?.scrollIntoView({ behavior: 'smooth' })
     // eslint-disable-next-line
-  }, [userInfo, params])
+  }, [userInfo, params, manual])
 
-  useEffect(() => {
-    const sendMessage = () => setUpdate(update => !update)
+  // useEffect(() => {
+  //   const sendMessage = () => setUpdate(update => !update)
     
-    socket.on('message', sendMessage)
-    setUpdate(!update)
+  //   socket.on('message', sendMessage)
+  //   setUpdate(!update)
 
-    return () => socket.off('message', sendMessage)
-    // eslint-disable-next-line
-  }, [messages?.length])
+  //   return () => socket.off('message', sendMessage)
+  //   // eslint-disable-next-line
+  // }, [messages?.length])
   
   const userImage = data && data.from?.image ? data.from.image : defaultImage
 

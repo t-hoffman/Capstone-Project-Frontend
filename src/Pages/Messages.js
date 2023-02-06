@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import socketio from "socket.io-client";
 
 // eslint-disable-next-line
-const socket = socketio.connect('http://127.0.0.1:5000')
+// const socket = socketio.connect()
 
 const Messages = () => {
   const { token, userInfo, update, navigate } = useContext(AuthContext)

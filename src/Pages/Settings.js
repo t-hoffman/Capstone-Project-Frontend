@@ -81,7 +81,7 @@ const SettingsForm = ({ type }) => {
   useEffect(() => {
     setError(false)
     setSuccess(false)
-  }, [location])
+  }, [location[2]])
 
   const displayError = {
     1: 'Cannot leave field blank, please try again',
