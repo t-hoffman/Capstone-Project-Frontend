@@ -219,13 +219,10 @@ a, a:visited, a:active {
 }
 
 @media screen and (max-width: 750px) {
-  .right-bar { display: none }
-  .middle-bar { width: 100%; border: none }
-}
-
-@media screen and (max-width: 400px) {
-  .profile-icon img { width: 40px; height: 40px }
-  .tw-footer { padding: 0 15px 0 15px; justify-content: flex-start; align-items: center }
+  .search-bar, .search-bar input, .search-bar svg { display: none !important }
+  .middle-bar { width: 100% }
+  .right-bar { width: fit-content }
+  .tw-footer { padding: 15px; justify-content: flex-start; align-items: center }
   #tw-footer-left { display: none }
   #tw-footer-mid {
     width: 75% !important; 
@@ -235,4 +232,9 @@ a, a:visited, a:active {
   #tw-footer-mid h4 { font-size: 14pt }
   #tw-footer-right { width: 25%; height: 100% }
   #tw-footer-right button { margin-bottom: 5px; font-size: 10pt }
+}
+
+@media screen and (max-width: 500px) {
+  .tw-footer { padding: 0 15px 0 15px; white-space: normal !important }
+  .profile-icon img { width: 40px; height: 40px }
 }
