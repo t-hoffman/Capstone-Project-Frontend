@@ -19,7 +19,7 @@ const TweetModal = ({ modal, show, setShow }) => {
 }
 
 const TweetForm = ({ setShow }) => {
-  const { token, userInfo, navigate, update, setUpdate, defaultImage } = useContext(AuthContext)
+  const { token, userInfo, navigate, update, setUpdate, defaultImage, API_URL } = useContext(AuthContext)
   const [input, setInput] = useState({ content: '', retweet_id: null })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -47,7 +47,7 @@ const TweetForm = ({ setShow }) => {
 
     if (input.content.length <= 0) { setError(true); setLoading(false); return; }
 
-    await (await fetch('/tweet', options)).json()
+    await (await fetch(`${API_URL}/tweet`, options)).json()
 
     setLoading(false)
     setShow && setShow(false)

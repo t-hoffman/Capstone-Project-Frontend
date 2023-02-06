@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const useToken = () => {
+  const API_URL = process.env.REACT_APP_API_URL
+  
   const getToken = () => {
     const userToken = window.localStorage.getItem('token');
     return userToken;
@@ -23,9 +25,13 @@ const useToken = () => {
       }
     }
 
-    await fetch('/logout', options)
-    setToken(null)
-    window.localStorage.removeItem('token')
+    try {
+      await fetch(`${API_URL}/logout`, options)
+      setToken(null)
+      window.localStorage.removeItem('token')
+    } catch(e) {
+      console.error(e)
+    }
   }
 
   const [token, setToken] = useState(getToken())
@@ -42,8 +48,9 @@ const useToken = () => {
             'Content-Type': 'application/json'
           }
         }
-        const user = await (await fetch('/verify', options)).json()
-        
+        const user = await (await fetch(`${API_URL}/verify`, options)).json()
+
+        if (user.msg === 'Signature verification failed') return deleteToken()
         setUserInfo(user)
       } catch(err) {
         console.error('err', err)

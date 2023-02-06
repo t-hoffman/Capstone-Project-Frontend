@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
+import { AuthContext } from './AuthContext';
 
 const SignInForm = ({ setToken, show, setShow }) => {
+  const { API_URL } = useContext(AuthContext)
   const initialState = { username: '', password: '' }
   const [input, setInput] = useState(initialState)
   const [error, setError] = useState(null)
@@ -23,7 +25,7 @@ const SignInForm = ({ setToken, show, setShow }) => {
       },
       body: JSON.stringify(input)
     }
-    const userLogin = await (await fetch('/login', options)).json()
+    const userLogin = await (await fetch(`${API_URL}/login`, options)).json()
 
     if (!userLogin['access_token']) return setError(true)
 

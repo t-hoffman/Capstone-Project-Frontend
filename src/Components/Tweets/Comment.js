@@ -4,8 +4,7 @@ import { Modal } from "react-bootstrap"
 import { Link } from "react-router-dom";
 
 const CommentBox = ({ show, setShow, tweet, update, setUpdate }) => {
-  const { token, userInfo, navigate } = useContext(AuthContext)
-  const defaultImage = 'https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_x96.jpg'
+  const { token, userInfo, navigate, defaultImage, API_URL } = useContext(AuthContext)
   const userImage = userInfo?.image ? userInfo.image : defaultImage
   const tweetImage = tweet && (tweet.user.image ? tweet.user.image : defaultImage)
   const [input, setInput] = useState({ comment: '' })
@@ -36,7 +35,7 @@ const CommentBox = ({ show, setShow, tweet, update, setUpdate }) => {
 
     if (input.comment.length <= 0) return
 
-    await (await fetch('/comment', options)).json()
+    await (await fetch(`${API_URL}/comment`, options)).json()
 
     setLoading(false)
     setShow(false)

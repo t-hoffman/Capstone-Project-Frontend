@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap'
 import { AuthContext } from './AuthContext'
 
 const SignUpForm = ({ show, setShow }) => {
-  const { navigate } = useContext(AuthContext)
+  const { navigate, API_URL } = useContext(AuthContext)
   const initialState = { name: '', email: '', username: '', password: '', passwordCheck: '', image: '', banner: '' }
   const [input, setInput] = useState(initialState)
   const [error, setError] = useState(false)
@@ -30,7 +30,7 @@ const SignUpForm = ({ show, setShow }) => {
       body: JSON.stringify(input)
     }
 
-    const newUser = await (await fetch('/register', options)).json()
+    const newUser = await (await fetch(`${API_URL}/register`, options)).json()
     
     const success = async () => {
       setInput(initialState)

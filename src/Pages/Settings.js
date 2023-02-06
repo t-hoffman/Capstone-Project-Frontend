@@ -35,7 +35,7 @@ const SettingsRightBar = () => {
 }
 
 const SettingsForm = ({ type }) => {
-  const { userInfo, token, setUserInfo, location } = useContext(AuthContext)
+  const { userInfo, token, setUserInfo, location, API_URL } = useContext(AuthContext)
   const [input, setInput] = useState({ [type]: '' })
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -66,7 +66,7 @@ const SettingsForm = ({ type }) => {
       body: body
     }
 
-    const user = await (await fetch(`/users/${userInfo.id}`, options)).json()
+    const user = await (await fetch(`${API_URL}/users/${userInfo.id}`, options)).json()
     if (!user['error'] && !user['msg']) {
       setSuccess(true)
       setUserInfo({...userInfo, [type]: input[type]})

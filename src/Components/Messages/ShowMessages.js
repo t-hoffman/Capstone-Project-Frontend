@@ -7,7 +7,7 @@ import '../../css/Messages.css'
 // const socket = socketio.connect()
 
 const ShowMessages = () => {
-  const { token, userInfo, navigate, update, setUpdate, defaultImage } = useContext(AuthContext)
+  const { token, userInfo, navigate, update, setUpdate, defaultImage, API_URL } = useContext(AuthContext)
   const [messages, setMessages] = useState(null)
   const [data, setData] = useState(null)
   const [input, setInput] = useState({ message: '' })
@@ -24,7 +24,7 @@ const ShowMessages = () => {
       }
     }
 
-    const data = await (await fetch(`/messages/${userInfo.id}/${params.user_id}`, options)).json()
+    const data = await (await fetch(`${API_URL}/messages/${userInfo.id}/${params.user_id}`, options)).json()
     data.messages.sort((a, b) => {
       return new Date(a.created_at) - new Date(b.created_at) 
     })
@@ -56,7 +56,7 @@ const ShowMessages = () => {
       },
       body: JSON.stringify({...input, recipient_id: params.user_id})
     }
-    if (input.message.length > 0) await fetch('/messages', options)
+    if (input.message.length > 0) await fetch(`${API_URL}/messages`, options)
 
     setInput({ message: '' })
     setManual(!manual)

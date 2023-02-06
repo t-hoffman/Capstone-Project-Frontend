@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 const Tweet = () => {
-  const { token, navigate, defaultImage, update, setUpdate } = useContext(AuthContext)
+  const { token, navigate, defaultImage, update, setUpdate, API_URL } = useContext(AuthContext)
   const [data, setData] = useState(null)
   const [show, setShow] = useState(false)
   const { id } = useParams()
@@ -42,13 +42,13 @@ const Tweet = () => {
       },
       body: JSON.stringify({ likes: likes + 1 })
     }
-    await fetch(`/tweet/${id}`, options)
+    await fetch(`${API_URL}/tweet/${id}`, options)
     setUpdate(!update)
   }
 
   useEffect(() => {
     const getTweet = async () => {
-      const tweet = await (await fetch(`/tweet/${id}`)).json()
+      const tweet = await (await fetch(`${API_URL}/tweet/${id}`)).json()
       setData(tweet)
     }
 

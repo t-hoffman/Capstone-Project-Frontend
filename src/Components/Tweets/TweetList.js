@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import CommentBox from "./Comment";
 
 const TweetList = ({ profilePage, id }) => {
-  const { userInfo, update, defaultImage } = useContext(AuthContext)
+  const { userInfo, update, defaultImage, API_URL } = useContext(AuthContext)
   const [data, setData] = useState(null)
   const [show, setShow] = useState(false)
   const [tweet, setTweet] = useState(null)
@@ -12,7 +12,7 @@ const TweetList = ({ profilePage, id }) => {
   useEffect(() => {
     const getTweets = async () => {
       const query = profilePage ? `/${id}` : ''
-      const tweets = await (await fetch(`/tweets${query}`)).json()
+      const tweets = await (await fetch(`${API_URL}/tweets${query}`)).json()
       setData(tweets)
     }
 

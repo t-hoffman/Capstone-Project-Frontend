@@ -7,7 +7,7 @@ import socketio from "socket.io-client";
 // const socket = socketio.connect()
 
 const Messages = () => {
-  const { token, userInfo, update, navigate } = useContext(AuthContext)
+  const { token, userInfo, update, navigate, API_URL } = useContext(AuthContext)
   const [messages, setMessages] = useState([])
 
   const getMessages = async () => {
@@ -18,7 +18,7 @@ const Messages = () => {
         'Authorization': 'Bearer ' + token
       }
     }
-    const data = await (await fetch(`/messages/${userInfo.id}`, options)).json()
+    const data = await (await fetch(`${API_URL}/messages/${userInfo.id}`, options)).json()
 
     setMessages(data)
   }

@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom'
 import '../css/Profile.css'
 
 const Profile = () => {
-  const { token, userInfo, navigate, defaultImage, defaultBanner } = useContext(AuthContext)
+  const { token, userInfo, navigate, defaultImage, defaultBanner, API_URL } = useContext(AuthContext)
   const { id } = useParams()
   const [data, setData] = useState(null)
 
   const getUserInfo = async () => {
     if (!token || id) {
       const userId = id ? id : userInfo?.id,
-            data = await (await fetch(`/users/${userId}`)).json()
+            data = await (await fetch(`${API_URL}/users/${userId}`)).json()
       setData(data)
     } else {
       setData(userInfo)
