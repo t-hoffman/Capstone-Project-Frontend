@@ -1,5 +1,5 @@
 import { AuthContext } from "Components/UserAuth/AuthContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom"
 import CommentBox from "./Comment";
 
@@ -37,8 +37,9 @@ const TweetList = ({ profilePage, id }) => {
 }
 
 const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, setShow, defaultImage }) => {
-  const { token, update, setUpdate, navigate, API_URL } = useContext(AuthContext)
+  const { token, update, setUpdate, navigate, userInfo, API_URL } = useContext(AuthContext)
   const userImage = user.image ? user.image : defaultImage
+  const deleteTweet = useRef()
 
   const formatDate = (date) => {
     const now = new Date().getTime()
@@ -69,22 +70,75 @@ const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, 
     await fetch(`${API_URL}/tweet/${id}`, options)
     setUpdate(!update)
   }
+  
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (deleteTweet.current && !deleteTweet.current.contains(e.target)) {
+        deleteTweet.current.style.display = 'none'
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const handleClick = (e) => {
+    e.preventDefault()
+
+    const { display } = deleteTweet.current.style
+    deleteTweet.current.style.display = display === 'none' ? 'block' : 'none'
+  }
+
+  const handleDelete = async (id) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    }
+
+    const tweet = await (await fetch(`${API_URL}/tweet/${id}`)).json()
+    if (tweet.comments.length > 0) {
+      tweet.comments.forEach(async (c) => {
+        await fetch(`${API_URL}/comment/${c.id}`, options)
+      })
+    }
+    
+    await fetch(`${API_URL}/tweet/${id}`, options)
+    setUpdate(!update)
+    return navigate('/profile')
+  }
 
   const likeCount = likes ? likes : 0
 
   return (
     <Link to={`/tweet/${id}`}>
-      <div className="content-box" key={idx}>
+      <div className="content-box" key={idx} style={{position:'relative'}}>
         <div className="profile-icon" onClick={(e) => { e.preventDefault(); navigate(`/profile/${user.id}`) }}>
           <img src={userImage} alt="Tweeter" />
         </div>
         <div className="content-right">
-          <div onClick={(e) => { e.preventDefault(); navigate(`/profile/${user.id}`) }}>
-            <b>{user.name}</b> &nbsp;
-            <span style={{color:'#849099',fontWeight:'normal'}}>@{user.username} - <span style={{fontSize:'11pt'}}>{formatDate(created_at)}</span></span>
-          </div>
-          <div style={{color:'#849099'}}>
-            {/* Replying to <span className="blue-link"><Link to="/">@BBCScienceNews</Link></span> */}
+          <div className="d-flex">
+            <div style={{whiteSpace:'nowrap'}}
+                  onClick={(e) => { e.preventDefault(); navigate(`/profile/${user.id}`) }}
+            >
+              <b>{user.name}</b> &nbsp;
+              <span style={{color:'#849099',fontWeight:'normal'}}>@{user.username} - <span style={{fontSize:'11pt'}}>{formatDate(created_at)}</span></span>
+            </div>
+            {
+              userInfo.id === user.id && (
+                <div className="w-100 d-flex justify-content-end">
+                  <div className="d-tweet" onClick={(e) => handleClick(e)}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                  </div>
+                  <div className="d-tweet-open" ref={deleteTweet} onClick={() => handleDelete(id)}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M16 6V4.5C16 3.12 14.88 2 13.5 2h-3C9.11 2 8 3.12 8 4.5V6H3v2h1.06l.81 11.21C4.98 20.78 6.28 22 7.86 22h8.27c1.58 0 2.88-1.22 3-2.79L19.93 8H21V6h-5zm-6-1.5c0-.28.22-.5.5-.5h3c.27 0 .5.22.5.5V6h-4V4.5zm7.13 14.57c-.04.52-.47.93-1 .93H7.86c-.53 0-.96-.41-1-.93L6.07 8h11.85l-.79 11.07zM9 17v-6h2v6H9zm4 0v-6h2v6h-2z"></path></g></svg>
+                    <b>Delete</b>
+                  </div>
+                </div>
+              )}
           </div>
           <div style={{fontWeight:'normal'}}>
             {content}

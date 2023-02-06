@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import '../css/Profile.css'
 
 const Profile = () => {
-  const { token, userInfo, navigate, defaultImage, defaultBanner, API_URL } = useContext(AuthContext)
+  const { token, userInfo, navigate, update, defaultImage, defaultBanner, API_URL } = useContext(AuthContext)
   const { id } = useParams()
   const [data, setData] = useState(null)
 
@@ -23,7 +23,7 @@ const Profile = () => {
     if (!token && !id) return navigate('/')
     if (!data) getUserInfo()
     // eslint-disable-next-line
-  }, [token, userInfo])
+  }, [token, userInfo, update])
 
   const profileImage = data && (data.image ? data.image : defaultImage)
   const bannerImage = data && (data.banner ? data.banner : defaultBanner)

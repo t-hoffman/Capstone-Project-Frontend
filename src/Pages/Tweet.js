@@ -55,9 +55,9 @@ const Tweet = () => {
     getTweet()
   }, [id, update])
 
-  const userImage = data && (data.user.image ? data.user.image : defaultImage)
+  const userImage = data && (data.user?.image ? data.user.image : defaultImage)
 
-  return data && (
+  return data && data.user && (
     <>
       <div className="p-3">
         <h4>Tweet</h4>
