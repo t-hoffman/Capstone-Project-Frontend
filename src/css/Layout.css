@@ -210,3 +210,19 @@ a, a:visited, a:active {
   color: #169cf1;
   font-weight: normal;
 }
+
+@media screen and (max-width: 1200px) {
+  .main-container { width: 100% }
+  .middle-bar { width: 70% }
+  .right-side { width: 100% }
+  .right-bar { width: 30%; min-width: 225px }
+}
+
+@media screen and (max-width: 750px) {
+  .right-bar { display: none }
+  .middle-bar { width: 100%; border: none }
+}
+
+@media screen and (max-width: 400px) {
+  .profile-icon img { width: 40px; height: 40px }
+}

@@ -91,7 +91,7 @@ const NavBar = () => {
             <div className="profile-icon">
               <img src={userImage} alt="Tweeter" />
             </div>
-            <div style={{wordWrap:'break-word'}}>
+            <div style={{wordWrap:'break-word'}} id="nav-user-info">
               <b>{userInfo?.name}</b><br />
               <span style={{color:'#849099'}}>@{userInfo?.username}</span>
             </div>
@@ -110,7 +110,7 @@ const NavIcon = ({ isActive, icon, activeicon, title }) => {
   return (
     <li>
       {isActive ? activeicon : icon}
-      {title}
+      <span className="nav-title">{title}</span>
     </li>
   )
 }

@@ -74,7 +74,7 @@ const TweetForm = ({ setShow }) => {
                   onChange={({ target }) => {setInput({...input, [target.name]: target.value}); setError(false)}} 
                   value={input.content}
         ></textarea>
-        <div className="tweet-box justify-content-end">
+        <div className="tweet-box justify-content-end" style={{border:'none'}}>
           <button className="tw-blue-btn-sm" onClick={handleSubmit} style={button}>Tweet</button>
           <div className="lds-ring" style={loader}><div></div><div></div><div></div><div></div></div>
         </div>

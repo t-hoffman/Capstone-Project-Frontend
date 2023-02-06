@@ -84,6 +84,7 @@
 .nav-user-open:hover { background-color: #E4E9EB }
 
 @media (prefers-color-scheme: dark) {
+  .tw-logo { margin: 0 }
   .nav-list a, .nav-list a:hover { color: #E7E9EA }
   .nav-list li:hover { background-color: #161616 }
   .nav-list svg, .nav-list img {
@@ -102,4 +103,27 @@
   }
 
   .nav-user-open:hover { background-color: #151515 }
+}
+
+@media screen and (max-width: 1200px) {
+  .nav-title { display: none }
+  .tw-blue-btn-lg { display: none }
+  .left-bar { 
+    width: fit-content !important; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+  }
+  .left-bar ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0; 
+    padding: 0; 
+    width: fit-content;
+  }
+  .nav-list svg, .nav-list img { margin: 0 }
+  .nav-list li { padding: 10px 15px }
+  #nav-user-info, .nav-user-more svg { display: none }
+  .nav-user-info { background-color: transparent !important; padding: 0 }
+  .nav-user-open { width: fit-content; position: fixed; bottom: 100px; padding: 10px }
 }
