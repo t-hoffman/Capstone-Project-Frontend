@@ -8,7 +8,7 @@ const TweetList = ({ profilePage, id }) => {
   const [data, setData] = useState(null)
   const [show, setShow] = useState(false)
   const [tweet, setTweet] = useState(null)
-console.log(API_URL)
+
   useEffect(() => {
     const getTweets = async () => {
       const query = profilePage ? `/${id}` : ''
@@ -37,7 +37,7 @@ console.log(API_URL)
 }
 
 const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, setShow, defaultImage }) => {
-  const { token, update, setUpdate, navigate } = useContext(AuthContext)
+  const { token, update, setUpdate, navigate, API_URL } = useContext(AuthContext)
   const userImage = user.image ? user.image : defaultImage
 
   const formatDate = (date) => {
@@ -66,7 +66,7 @@ const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, 
       },
       body: JSON.stringify({ likes: likes + 1 })
     }
-    await fetch(`/tweet/${id}`, options)
+    await fetch(`${API_URL}/tweet/${id}`, options)
     setUpdate(!update)
   }
 

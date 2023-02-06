@@ -99,21 +99,25 @@ const Tweet = () => {
         </div>
       </div>
       {
-        data.comments.map((comment, idx) => (
-          <div className="content-box"  key={idx}>
-            <div className="profile-icon" onClick={(e) => { e.preventDefault(); navigate(`/profile/${comment.user.id}`) }}>
-              <img src={userImage} alt="Tweeter" />
-            </div>
-            <div className="content-right">
-              <div onClick={(e) => { e.preventDefault(); navigate(`/profile/${comment.user.id}`) }}>
-                <b>{comment.user.name}</b> &nbsp;
-                <span style={{color:'#849099'}}>@{comment.user.username} - {formatDate(data.created_at, 'hr')}</span>
+        data.comments.map((comment, idx) => {
+          const commentImage = comment.user.image ? comment.user.image : defaultImage
+
+          return (
+            <div className="content-box"  key={idx}>
+              <div className="profile-icon" onClick={(e) => { e.preventDefault(); navigate(`/profile/${comment.user.id}`) }}>
+                <img src={commentImage} alt="Tweeter" />
               </div>
-              <div style={{color:'#849099'}}>Replying to <span className="blue-link">@{data.user.username}</span></div>
-              <div>{comment.comment}</div>
+              <div className="content-right">
+                <div onClick={(e) => { e.preventDefault(); navigate(`/profile/${comment.user.id}`) }}>
+                  <b>{comment.user.name}</b> &nbsp;
+                  <span style={{color:'#849099'}}>@{comment.user.username} - {formatDate(data.created_at, 'hr')}</span>
+                </div>
+                <div style={{color:'#849099'}}>Replying to <span className="blue-link">@{data.user.username}</span></div>
+                <div>{comment.comment}</div>
+              </div>
             </div>
-          </div>
-        ))
+          )
+        })
       }
       <CommentBox tweet={data} show={show} setShow={setShow} update={update} setUpdate={setUpdate} />
     </>
