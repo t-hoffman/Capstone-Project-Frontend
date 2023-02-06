@@ -177,6 +177,7 @@ a, a:visited, a:active {
   .middle-bar { width: 70% }
   .right-side { width: 100% }
   .right-bar { width: 30%; min-width: 225px }
+  .profile-banner-top { background-size: cover }
 }
 
 @media screen and (max-width: 750px) {
@@ -198,5 +199,4 @@ a, a:visited, a:active {
 @media screen and (max-width: 500px) {
   .tw-footer { padding: 0 15px 0 15px; white-space: normal !important }
   .profile-icon img { width: 40px; height: 40px }
-  .profile-banner-top { background-size: cover }
 }
