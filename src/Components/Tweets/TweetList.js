@@ -116,19 +116,19 @@ const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, 
   return (
     <Link to={`/tweet/${id}`}>
       <div className="content-box" key={idx} style={{position:'relative'}}>
-        <div className="profile-icon" onClick={(e) => { e.preventDefault(); navigate(`/profile/${user.id}`) }}>
+        <div className="profile-icon" onClick={(e) => { e.preventDefault(); navigate(`/profile/${user?.id}`) }}>
           <img src={userImage} alt="Tweeter" />
         </div>
         <div className="content-right">
           <div className="d-flex">
             <div style={{whiteSpace:'nowrap'}}
-                  onClick={(e) => { e.preventDefault(); navigate(`/profile/${user.id}`) }}
+                  onClick={(e) => { e.preventDefault(); navigate(`/profile/${user?.id}`) }}
             >
               <b>{user.name}</b> &nbsp;
               <span style={{color:'#849099',fontWeight:'normal'}}>@{user.username} - <span style={{fontSize:'11pt'}}>{formatDate(created_at)}</span></span>
             </div>
             {
-              userInfo.id === user.id && (
+              userInfo && userInfo.id === user.id && (
                 <div className="w-100 d-flex justify-content-end">
                   <div className="d-tweet" onClick={(e) => handleClick(e)}>
                     <svg viewBox="0 0 24 24" aria-hidden="true"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
