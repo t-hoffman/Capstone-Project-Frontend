@@ -5,7 +5,10 @@
   border-radius: 15px
 }
 
-.modal-dialog { max-width: 600px !important; margin-top: 25vh }
+.modal-dialog {
+  max-width: 600px !important;
+  margin-top: 15vh;
+}
 .modal-header, .modal-footer { border: none }
 .modal-header { padding: 40px 0 0 40px }
 .modal-footer { justify-content: center }

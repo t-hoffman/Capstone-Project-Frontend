@@ -138,7 +138,7 @@ const Tweet = ({ idx, id, user, content, created_at, comments, likes, setTweet, 
                     <b>Delete</b>
                   </div>
                 </div>
-              )}
+            )}
           </div>
           <div style={{fontWeight:'normal'}}>
             {content}
