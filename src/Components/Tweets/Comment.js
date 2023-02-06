@@ -68,7 +68,7 @@ const CommentBox = ({ show, setShow, tweet, update, setUpdate }) => {
     <Modal show={show} onHide={() => setShow(!show)}>
       <Modal.Header closeButton />
       <Modal.Body>
-        <div className="content-box" style={{borderTop:'none'}}>
+        <div className="content-box" style={{borderTop:'none'}} onClick={() => navigate(`/profile/${tweet.user.id}`)}>
           <div className="profile-icon">
             <img src={tweetImage} alt="Tweeter" />
           </div>
