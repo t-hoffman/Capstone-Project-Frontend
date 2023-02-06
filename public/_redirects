@@ -1,1 +1,10 @@
+/messages/* https://tw-proj-be.herokuapp.com/messages/:splat 200
+/comment/* https://tw-proj-be.herokuapp.com/comment/:splat 200
+/tweet/* https://tw-proj-be.herokuapp.com/tweet/:splat 200
+/tweets/* https://tw-proj-be.herokuapp.com/tweets/:splat 200
+/login/* https://tw-proj-be.herokuapp.com/login/:splat 200
+/register/* https://tw-proj-be.herokuapp.com/register/:splat 200
+/logout/* https://tw-proj-be.herokuapp.com/logout/:splat 200
+/verify/* https://tw-proj-be.herokuapp.com/verify/:splat 200
+/users/* https://tw-proj-be.herokuapp.com/users/:splat 200
 /* /index.html 200
