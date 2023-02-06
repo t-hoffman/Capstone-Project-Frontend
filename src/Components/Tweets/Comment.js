@@ -10,8 +10,14 @@ const CommentBox = ({ show, setShow, tweet, update, setUpdate }) => {
   const tweetImage = tweet && (tweet.user.image ? tweet.user.image : defaultImage)
   const [input, setInput] = useState({ comment: '' })
 
+  // loader button
+  const [loading, setLoading] = useState(false)
+  const loader = loading ? {display: 'inline-block'} : {display: 'none'}
+  const button = loading ? {display: 'none'} : {display: 'block'}
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
 
     const body = {
       comment: input.comment,
@@ -32,6 +38,7 @@ const CommentBox = ({ show, setShow, tweet, update, setUpdate }) => {
 
     await (await fetch('/comment', options)).json()
 
+    setLoading(false)
     setShow(false)
     setInput({ comment: '' })
     setUpdate ? setUpdate(!update) : navigate(`/tweet/${tweet.id}`)
@@ -92,7 +99,8 @@ const CommentBox = ({ show, setShow, tweet, update, setUpdate }) => {
                       value={input.comment}
             ></textarea>
             <div className="tweet-box justify-content-end" style={{borderTop:'none'}}>
-              <button className="tw-blue-btn-sm" onClick={handleSubmit}>Comment</button>
+              <button className="tw-blue-btn-sm" onClick={handleSubmit} style={button}>Comment</button>
+              <div className="lds-ring" style={loader}><div></div><div></div><div></div><div></div></div>
             </div>
           </div>
         </div>
