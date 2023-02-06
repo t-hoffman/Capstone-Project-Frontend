@@ -8,7 +8,7 @@ const TweetList = ({ profilePage, id }) => {
   const [data, setData] = useState(null)
   const [show, setShow] = useState(false)
   const [tweet, setTweet] = useState(null)
-
+console.log(API_URL)
   useEffect(() => {
     const getTweets = async () => {
       const query = profilePage ? `/${id}` : ''
