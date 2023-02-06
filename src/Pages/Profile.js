@@ -21,7 +21,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (!token && !id) return navigate('/')
-    if (!data) getUserInfo()
+    if (!data || data.id !== userInfo.id) getUserInfo()
     // eslint-disable-next-line
   }, [token, userInfo, update])
 
