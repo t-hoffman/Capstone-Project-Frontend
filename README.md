@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `TWEETER` - Reverse Engineered Twitter
 
-## Available Scripts
+Tweeter is a web application that gives you a space to share anything that's important to you through small bits of text.  For this application I reverse engineered some integral features of the Twitter platform.  Users are able to sign up, sign in and start sharing!  I also wanted to make it look just like the actual Twitter page and created my own custom CSS for this project.  There are bits of Bootsrap in here, however, it's only adding small things like "w-100" and the occasional "d-flex."
 
-In the project directory, you can run:
+### `FEATURES`
 
-### `yarn start`
+Tweeter has 4 main pages:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> Sign up / Sign in pages (+ also modals)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+> Landing page with all Tweets
 
-### `yarn test`
+> Profile page
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> Tweet page to show all comments
 
-### `yarn build`
+With Tweeter you can `sign up` providing your name, email, username, password (must match), profile avatar image URL and profile banner image URL.  Once signed up you have the `ability to edit all of your user account settings` as well.  Then you can start `creating your own Tweets` and if you don't like it you can `delete your own Tweet.`  You can `browse all Tweets` on the landing page and if you find one that you like you can `comment on all Tweets` to share your thoughts.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Whenever you computer is in dark mode the theme will also change automatically.  Toggling through dark and light mode will give you drastically different views.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### `PHOTO SNIPPETS`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> User not signed in:
 
-### `yarn eject`
+<img width="600" alt="Screenshot 2023-02-05 at 11 29 23 PM" src="https://user-images.githubusercontent.com/116391297/216911709-43c35b57-ba55-4c63-89dc-7a4c3e2b71e4.png">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img width="600" alt="Screenshot 2023-02-05 at 11 30 10 PM" src="https://user-images.githubusercontent.com/116391297/216911724-46ecbec7-9ecc-402f-ab46-4b515e61c9f7.png">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Signed in:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img width="600" alt="Screenshot 2023-02-05 at 11 32 39 PM" src="https://user-images.githubusercontent.com/116391297/216911757-52e84b0c-1d12-4dc4-aa4e-2083cf04abca.png">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img width="600" alt="Screenshot 2023-02-05 at 11 39 04 PM" src="https://user-images.githubusercontent.com/116391297/216912678-563d684a-65ac-42cc-8674-4a081ade869f.png">
 
-## Learn More
+<img width="600" alt="Screenshot 2023-02-05 at 11 35 34 PM" src="https://user-images.githubusercontent.com/116391297/216912228-c3a367f3-a429-49ef-b92c-d5299f28136e.png">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img width="600" alt="Screenshot 2023-02-05 at 11 32 19 PM" src="https://user-images.githubusercontent.com/116391297/216912884-be088c03-626b-4487-be4c-ccfad893ea30.png">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### `TECHNOLOGIES`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+> ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-### Analyzing the Bundle Size
+> ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+> ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-### Making a Progressive Web App
+> ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+> ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
-### Advanced Configuration
+> ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+> ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-### Deployment
+### `FUTURE ADDITIONS`
+> Real-time Chat app, I had this working locally using SocketIO, but when I deployed it wasn't working correctly.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### `LINKS`
 
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+https://tweeter-project.netlify.app/
