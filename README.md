@@ -59,3 +59,5 @@ Whenever you computer is in dark mode the theme will also change automatically. 
 ### `LINKS`
 
 https://tweeter-project.netlify.app/
+
+** CHROME USERS ** you may have a red screen saying site is dangerous, this is because it is a "clone" of Twitter.  Click <Details> then <visit this unsafe site> to view the project.
