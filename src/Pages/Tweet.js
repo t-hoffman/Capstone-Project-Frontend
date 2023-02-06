@@ -110,7 +110,7 @@ const Tweet = () => {
               <div className="content-right">
                 <div onClick={(e) => { e.preventDefault(); navigate(`/profile/${comment.user.id}`) }}>
                   <b>{comment.user.name}</b> &nbsp;
-                  <span style={{color:'#849099'}}>@{comment.user.username} - {formatDate(data.created_at, 'hr')}</span>
+                  <span style={{color:'#849099'}}>@{comment.user.username} - {formatDate(comment.created_at, 'hr')}</span>
                 </div>
                 <div style={{color:'#849099'}}>Replying to <span className="blue-link">@{data.user.username}</span></div>
                 <div>{comment.comment}</div>
