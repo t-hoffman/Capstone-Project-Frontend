@@ -97,12 +97,14 @@ a, a:visited, a:active {
   justify-content: flex-start;
   width: fit-content;
   padding-right: 15px;
+  z-index: 2;
 }
 
 .profile-icon img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  z-index: 2;
 }
 
 .content-right { width: 100% }

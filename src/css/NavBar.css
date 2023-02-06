@@ -78,6 +78,8 @@
   margin-bottom: 10px;
   box-shadow: 0 0 10px #e0e0e0;
   cursor: pointer;
+  background-color: #fff;
+  z-index: 10;
 }
 
 .nav-user-open:hover { background-color: #E4E9EB }
@@ -99,6 +101,7 @@
   .nav-user-open {
     border: 1px solid #1D1D1D;
     box-shadow: 0 0 10px #727272;
+    background-color: #000;
   }
 
   .nav-user-open:hover { background-color: #151515 }
