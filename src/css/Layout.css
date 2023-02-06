@@ -180,7 +180,7 @@ a, a:visited, a:active {
 @media screen and (max-width: 750px) {
   /* .search-bar, .search-bar input, .search-bar svg { display: none !important } */
   .middle-bar { width: 100% }
-  /* .right-bar { display: none } */
+  .right-bar { display: none }
   .tw-footer { padding: 15px; justify-content: flex-start; align-items: center }
   #tw-footer-left { display: none }
   #tw-footer-mid {
