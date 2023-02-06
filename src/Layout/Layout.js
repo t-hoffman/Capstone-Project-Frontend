@@ -31,6 +31,8 @@ const Layout = ({ children }) => {
                 <Route path="username" element={<SettingsForm type="username" />} />
                 <Route path="name" element={<SettingsForm type="name" />} />
                 <Route path="email" element={<SettingsForm type="email" />} />
+                <Route path="image" element={<SettingsForm type="image" />} />
+                <Route path="banner" element={<SettingsForm type="banner" />} />
                 <Route path="password" element={<SettingsForm type="password" />} />
                 <Route path="*" element={<Navigate to="/settings" />} />
               </Route>

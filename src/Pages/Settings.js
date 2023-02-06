@@ -20,6 +20,8 @@ const Settings = () => {
         <Link to="/settings/email"><li>Email</li></Link>
         <Link to="/settings/password"><li>Password</li></Link>
         <Link to="/settings/name"><li>Name</li></Link>
+        <Link to="/settings/image"><li>Image</li></Link>
+        <Link to="/settings/banner"><li>Banner</li></Link>
       </ul>
     </>
   )
