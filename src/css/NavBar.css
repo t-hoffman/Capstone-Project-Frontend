@@ -131,6 +131,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .nav-user-info-cont { position: fixed; left: 5px; bottom: 25px }
-  .nav-user-open { position: fixed; left: 10px; bottom:  70px }
+  /* .nav-user-info-cont { position: fixed; left: 5px; bottom: 25px }
+  .nav-user-open { position: fixed; left: 10px; bottom:  70px } */
+  .nav-user-info { position: fixed; bottom: 60px }
 }
