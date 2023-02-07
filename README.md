@@ -53,8 +53,15 @@ Whenever you computer is in dark mode the theme will also change automatically. 
 
 > ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+
 ### `FUTURE ADDITIONS`
+
 > Real-time Chat app, I had this working locally using SocketIO, but when I deployed it wasn't working correctly.
+
+> Explore/search of Tweets and users
+
+> Upload profile photos/banners
 
 ### `LINKS`
 
