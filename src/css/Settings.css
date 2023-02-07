@@ -1,5 +1,5 @@
 .settings-middle-bar { width: 40% !important }
-.settings-right-bar { width: 60% !important }
+.right-bar-other { width: 60% !important }
 
 .settings-middle-bar a { font-weight: normal }
 .settings-middle-bar a:hover { text-decoration: none }

@@ -55,16 +55,13 @@ a, a:visited, a:active {
   overflow: auto;
   border-right: 1px solid #EFF3F4
 }
-.right-bar {
+.right-bar, .right-bar-other {
   width: 40%;
   height: 100%;
   overflow: auto;
   padding-left: 20px;
   position: relative;
 }
-
-.right-bar::-webkit-scrollbar,
-.middle-bar::-webkit-scrollbar { display: none }
 
 .right-side {
   width: 77%;
@@ -177,13 +174,13 @@ a, a:visited, a:active {
   .middle-bar { width: 70% }
   .right-side { width: 100% }
   .right-bar { width: 30%; min-width: 225px }
-  .profile-banner-top { background-size: cover }
+  .right-bar-other { padding-right: 5px }
+  /* .profile-banner-top { background-size: cover } */
 }
 
 @media screen and (max-width: 750px) {
-  /* .search-bar, .search-bar input, .search-bar svg { display: none !important } */
   .middle-bar { width: 100% }
-  .right-bar { display: none }
+  .right-bar { display: none; max-width: fit-content }
   .tw-footer { padding: 15px; justify-content: flex-start; align-items: center }
   #tw-footer-left { display: none }
   #tw-footer-mid {

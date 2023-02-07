@@ -1,7 +1,6 @@
 .profile-banner {
   width: 100%;
   height: 266px;
-  margin-top: 50px;
   position: relative;
 }
 
@@ -75,4 +74,18 @@
   }
   .prof-button { border: 1px solid #2B3135 }
   .prof-button:hover { background-color: #151515 } 
+}
+
+@media screen and (max-width: 500px) {
+  .profile-banner-top { height: 15vh; background-size: cover }
+  .profile-banner { height: 19.5vh }
+  .profile-avatar { border: 3px solid #fff; bottom: 0; }
+  .profile-avatar img { width: 60px; height: 60px }
+  .profile-bottom { height: fit-content; padding: 0 }
+  .overlay { display: none }
+  .prof-button { margin-top: 5px }
+}
+
+@media screen and (max-width: 500px) and (prefers-color-scheme: dark) {
+  .profile-avatar { border: 3px solid #000 }
 }

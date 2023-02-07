@@ -129,3 +129,8 @@
   .nav-user-info { background-color: transparent !important; padding: 0 }
   .nav-user-open { width: fit-content; position: fixed; bottom: 100px; padding: 10px }
 }
+
+@media screen and (max-width: 500px) {
+  .nav-user-info-cont { position: fixed; left: 5px; bottom: 25px }
+  .nav-user-open { position: fixed; left: 10px; bottom:  70px }
+}

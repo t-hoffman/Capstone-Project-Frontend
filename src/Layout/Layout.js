@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   const optionalStyling = ['settings', 'messages']
                           .includes(location[1])
   const middleStyle = optionalStyling && 'settings-middle-bar',
-        rightStyle = optionalStyling && 'settings-right-bar'
+        rightDiv = optionalStyling ? 'right-bar-other' : 'right-bar'
 
   return (
     <>
@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
           <div className={`middle-bar ${middleStyle}`}>
             {children}
           </div>
-          <div className={`right-bar ${rightStyle}`}>
+          <div className={rightDiv}>
             {!optionalStyling && <SearchBar />}
             <Routes>
               <Route path="/settings">
