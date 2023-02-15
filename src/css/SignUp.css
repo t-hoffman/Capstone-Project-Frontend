@@ -44,6 +44,9 @@
   color: #1C9BF0;
   font-size: 10pt;
   margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-flow: column-reverse;
 }
 
 .input-cont input {
@@ -53,6 +56,38 @@
   border: none;
   color: #000;
   font-size: 14pt;
+}
+
+label, input {
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+.input-cont input:placeholder-shown + label {
+  transform: translate(0, 100%) scale(1.5);
+  transform-origin: left bottom;
+  max-width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: text;
+  color: #849099;
+}
+
+::-webkit-input-placeholder {
+  opacity: 0;
+  transition: inherit;
+}
+
+input:focus::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+.input-cont input:not(:placeholder-shown) + label,
+.input-cont input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+  color: #1C9BF0;
 }
 
 .input-cont input:autofill,
