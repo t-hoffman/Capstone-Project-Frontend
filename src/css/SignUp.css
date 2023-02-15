@@ -38,7 +38,7 @@
 
 .input-cont {
   width: 100%;
-  border: 1px solid #333639;
+  border: 1px solid #CFD9DE;
   border-radius: 5px;
   padding: 5px;
   color: #1C9BF0;
@@ -125,5 +125,6 @@ input:focus::-webkit-input-placeholder {
     filter: invert(100%) sepia(3%) saturate(0%) hue-rotate(98deg) brightness(119%) contrast(100%);
   }
 
+  .input-cont { border: 1px solid #333639 }
   .input-cont input { color: white }
 }
