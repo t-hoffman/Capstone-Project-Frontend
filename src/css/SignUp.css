@@ -38,7 +38,7 @@
 
 .input-cont {
   width: 100%;
-  border: 2px solid #1C9BF0;
+  border: 1px solid #333639;
   border-radius: 5px;
   padding: 5px;
   color: #1C9BF0;
@@ -88,6 +88,10 @@ input:focus::-webkit-input-placeholder {
   transform: translate(0, 0) scale(1);
   cursor: pointer;
   color: #1C9BF0;
+}
+
+.input-cont:focus-within {
+  border: 2px solid #1C9BF0;
 }
 
 .input-cont input:autofill,
