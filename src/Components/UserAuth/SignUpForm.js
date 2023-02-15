@@ -63,32 +63,32 @@ const SignUpForm = ({ show, setShow }) => {
         <Modal.Body>
           {error && <span className="header-error">{displayError[error]}</span>}
           <div className="input-cont">
-            Name
-            <input type="text" name="name" value={input.name} onChange={handleChange} autoComplete="off" /><br />
+            <input type="text" id="name" name="name" value={input.name} onChange={handleChange} autoComplete="off" placeholder=" " />
+            <label for="name">Name</label>
           </div>
           <div className={`input-cont ${error === 1 && `input-error`}`}>
-            Email
-            <input type="text" name="email" value={input.email} onChange={handleChange} autoComplete="off" /><br />
+            <input type="text" id="email" name="email" value={input.email} onChange={handleChange} autoComplete="off" placeholder=" " />
+            <label for="email">Email</label>
           </div>
           <div className={`input-cont ${error === 2 && `input-error`}`}>
-            Username
-            <input type="text" name="username" value={input.username} onChange={handleChange} autoComplete="off" />
+            <input type="text" id="username" name="username" value={input.username} onChange={handleChange} autoComplete="off" placeholder=" " />
+            <label for="username">Username</label>
           </div>
           <div className={`input-cont ${error === 4 && `input-error`}`}>
-            Password
-            <input type="password" name="password" value={input.password} onChange={handleChange} autoComplete="off" />
+            <input type="password" id="p1" name="password" value={input.password} onChange={handleChange} autoComplete="off" placeholder=" " />
+            <label for="p1">Password</label>
           </div>
           <div className={`input-cont ${error === 4 && `input-error`}`}>
-            Password
-            <input type="password" name="passwordCheck" value={input.passwordCheck} onChange={handleChange} autoComplete="off" />
+            <input type="password" id="p2" name="passwordCheck" value={input.passwordCheck} onChange={handleChange} autoComplete="off" placeholder=" " />
+            <label for="p2">Password</label>
           </div>
           <div className="input-cont">
-            Photo URL
-            <input type="text" name="image" value={input.image} onChange={handleChange} autoComplete="off" />
+            <input type="text" id="image" name="image" value={input.image} onChange={handleChange} autoComplete="off" placeholder="Photo URL" />
+            <label for="image">Photo</label>
           </div>
           <div className="input-cont">
-            Banner URL
-            <input type="text" name="banner" value={input.banner} onChange={handleChange} autoComplete="off" />
+            <input type="text" id="banner" name="banner" value={input.banner} onChange={handleChange} autoComplete="off" placeholder="Banner URL" />
+            <label for="banner">Banner</label>
           </div>
         </Modal.Body>
         <Modal.Footer>
