@@ -74,12 +74,13 @@ label, input {
   color: #849099;
 }
 
-::-webkit-input-placeholder {
+.input-cont ::-webkit-input-placeholder,
+.input-cont ::placeholder {
   opacity: 0;
   transition: inherit;
 }
 
-input:focus::-webkit-input-placeholder {
+.input-cont input:focus::-webkit-input-placeholder {
   opacity: 1;
 }
 
