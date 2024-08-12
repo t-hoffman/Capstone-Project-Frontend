@@ -47,6 +47,7 @@ a, a:visited, a:active {
 .left-bar {
   width: 23%;
   position: relative;
+  padding-top: 15px;
   border-right: 1px solid #EFF3F4;
 }
 .middle-bar {
