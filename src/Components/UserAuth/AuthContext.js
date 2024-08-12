@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
   const location = useLocation().pathname.split('/') 
   const API_URL = process.env.REACT_APP_API_URL
   const defaultImage = 'https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_400x400.jpg'
-  const defaultBanner = 'https://pbs.twimg.com/profile_banners/44196397/1576183471/1500x500'
+  const defaultBanner = '/defaultBanner.jpeg'
   const value = {
     token,
     setToken,
