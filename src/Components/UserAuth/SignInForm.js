@@ -58,7 +58,7 @@ const SignInForm = ({ setToken, show, setShow }) => {
                    onChange={handleChange} 
                    placeholder=" "
             />
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
           </div>
           <div className="input-cont">
             <input type="password" 
@@ -69,7 +69,7 @@ const SignInForm = ({ setToken, show, setShow }) => {
                    autoComplete="off" 
                    placeholder=" "
             />
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
           </div>
         </Modal.Body>
         <Modal.Footer>
