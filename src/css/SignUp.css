@@ -2,21 +2,28 @@
   color: #000;
   background-color: #fff;
   border: none;
-  border-radius: 15px
+  border-radius: 15px;
 }
 
 .modal-dialog {
   max-width: 600px !important;
   margin-top: 15vh;
 }
-.modal-header, .modal-footer { border: none }
-.modal-header { padding: 40px 0 0 40px }
-.modal-footer { justify-content: center }
+.modal-header,
+.modal-footer {
+  border: none;
+}
+.modal-header {
+  padding: 40px 0 0 40px;
+}
+.modal-footer {
+  justify-content: center;
+}
 
 .modal-header button {
-   position: absolute;
-   top: 15px;
-   right: 15px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
 .modal-footer button {
@@ -38,10 +45,10 @@
 
 .input-cont {
   width: 100%;
-  border: 1px solid #CFD9DE;
+  border: 1px solid #cfd9de;
   border-radius: 5px;
   padding: 5px;
-  color: #1C9BF0;
+  color: #1c9bf0;
   font-size: 10pt;
   margin-top: 10px;
   position: relative;
@@ -58,7 +65,8 @@
   font-size: 14pt;
 }
 
-label, input {
+label,
+input {
   transition: all 0.2s;
   touch-action: manipulation;
 }
@@ -88,16 +96,16 @@ label, input {
 .input-cont input:focus + label {
   transform: translate(0, 0) scale(1);
   cursor: pointer;
-  color: #1C9BF0;
+  color: #1c9bf0;
 }
 
 .input-cont:focus-within {
-  border: 2px solid #1C9BF0;
+  border: 2px solid #1c9bf0;
 }
 
 .input-cont input:autofill,
-.input-cont input:-webkit-autofill { 
-  -webkit-box-shadow: 0 0 0 30px white inset !important
+.input-cont input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 .header-error {
@@ -106,26 +114,74 @@ label, input {
 }
 
 .header-success {
-  color: #00BA7C;
+  color: #00ba7c;
   font-weight: bold;
 }
 
-.input-error { border: 2px solid #ff5656; color: #ff5656 }
+.input-error {
+  border: 2px solid #ff5656;
+  color: #ff5656;
+}
+
+.signup-form input:-webkit-autofill,
+.signup-form input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #000 inset !important;
+  -webkit-text-fill-color: #fff !important;
+  outline: none;
+  background-image: none !important;
+  box-shadow: 0 50px 0px inset #000 !important;
+}
+
+@media (max-width: 430px) {
+  .modal-content {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .modal-footer button {
+    width: 60%;
+    padding: 10px;
+  }
+  .modal-body div input,
+  input {
+    font-size: 1rem;
+  }
+  label {
+    font-size: 80%;
+  }
+  .signup-form {
+    padding: 0 2em;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
-  .modal-content { background-color: #000; color: #fff }
-  .modal-footer button:hover { background-color: #161616 }
-  .modal-backdrop { background-color: rgba(72, 140, 185, 0.4) }
-  
+  .modal-header {
+    padding: 30px 0 0 30px;
+  }
+  .modal-content {
+    background-color: #000;
+    color: #fff;
+  }
+  .modal-footer button:hover {
+    background-color: #161616;
+  }
+  .modal-backdrop {
+    background-color: rgba(72, 140, 185, 0.4);
+  }
+
   .modal-footer button {
     border: 1px solid #536371;
     transition: background-color 0.3s ease-in-out;
   }
-  
+
   .btn-close {
-    filter: invert(100%) sepia(3%) saturate(0%) hue-rotate(98deg) brightness(119%) contrast(100%);
+    filter: invert(100%) sepia(3%) saturate(0%) hue-rotate(98deg)
+      brightness(119%) contrast(100%);
   }
 
-  .input-cont { border: 1px solid #333639 }
-  .input-cont input { color: white }
+  .input-cont {
+    border: 1px solid #333639;
+  }
+  .input-cont input {
+    color: white;
+  }
 }

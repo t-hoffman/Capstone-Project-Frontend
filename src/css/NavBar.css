@@ -4,15 +4,25 @@
   border-radius: 50%;
 }
 
-.tw-logo:hover { background-color: rgb(24, 158, 242, .15) }
-.nav-list a, .nav-list a:hover {
+.tw-logo:hover {
+  background-color: rgb(24, 158, 242, 0.15);
+}
+.nav-list a,
+.nav-list a:hover {
   color: black;
   text-decoration: none;
   outline: none;
   border: none;
 }
-.nav-list svg, .nav-list img { width: 25px; margin: -5px 10px 0 0 }
-.nav-list { margin-top: 15px; list-style: none }
+.nav-list svg,
+.nav-list img {
+  width: 25px;
+  margin: -5px 10px 0 0;
+}
+.nav-list {
+  margin-top: 15px;
+  list-style: none;
+}
 
 .nav-list li {
   width: fit-content;
@@ -26,9 +36,12 @@
   border-radius: 75px;
 }
 
-.nav-list-active { font-weight: bold }
+.nav-list-active {
+  font-weight: bold;
+}
 
-.tw-blue-btn-lg, .tw-blue-btn-sm {
+.tw-blue-btn-lg,
+.tw-blue-btn-sm {
   width: 75%;
   padding: 12px;
   background-color: #169cf1;
@@ -63,7 +76,9 @@
   cursor: pointer;
 }
 
-.nav-user-info:hover { background-color: #E4E9EB }
+.nav-user-info:hover {
+  background-color: #e4e9eb;
+}
 .nav-user-more svg {
   width: 20px;
   float: right;
@@ -82,56 +97,107 @@
   z-index: 10;
 }
 
-.nav-user-open:hover { background-color: #E4E9EB }
+.nav-user-open:hover {
+  background-color: #e4e9eb;
+}
 
 @media (prefers-color-scheme: dark) {
-  .tw-logo { margin: 0 }
-  .nav-list a, .nav-list a:hover { color: #E7E9EA }
-  .nav-list li:hover { background-color: #161616 }
-  .nav-list svg, .nav-list img {
-    filter: invert(100%) sepia(0%) saturate(3601%) hue-rotate(251deg) brightness(116%) contrast(100%)
+  .tw-logo {
+    margin: 0;
+  }
+  .nav-list a,
+  .nav-list a:hover {
+    color: #e7e9ea;
+  }
+  .nav-list li:hover {
+    background-color: #161616;
+  }
+  .nav-list svg,
+  .nav-list img {
+    filter: invert(100%) sepia(0%) saturate(3601%) hue-rotate(251deg)
+      brightness(116%) contrast(100%);
   }
 
-  .nav-user-info:hover { background-color: #181818;}
+  .nav-user-info:hover {
+    background-color: #181818;
+  }
 
   .nav-user-more svg {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+      brightness(102%) contrast(102%);
   }
 
   .nav-user-open {
-    border: 1px solid #1D1D1D;
+    border: 1px solid #1d1d1d;
     box-shadow: 0 0 10px #727272;
     background-color: #000;
   }
 
-  .nav-user-open:hover { background-color: #151515 }
+  .nav-user-open:hover {
+    background-color: #151515;
+  }
 }
 
 @media screen and (max-width: 1200px) {
-  .nav-title { display: none }
-  .tw-blue-btn-lg { display: none }
-  .left-bar { 
-    width: fit-content !important; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: flex-end; 
+  .nav-title {
+    display: none;
+  }
+  .tw-blue-btn-lg {
+    display: none;
+  }
+  .left-bar {
+    width: fit-content !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
   .left-bar ul {
     display: flex;
     flex-direction: column;
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
     width: fit-content;
   }
-  .nav-list svg, .nav-list img { margin: 0 }
-  .nav-list li { padding: 10px 15px }
-  #nav-user-info, .nav-user-more svg { display: none }
-  .nav-user-info { background-color: transparent !important; padding: 0 }
-  .nav-user-open { width: fit-content; position: fixed; bottom: 100px; padding: 10px }
+  .nav-list svg,
+  .nav-list img {
+    margin: 0;
+  }
+  .nav-list li {
+    padding: 10px 15px;
+  }
+  #nav-user-info,
+  .nav-user-more svg {
+    display: none;
+  }
+  .nav-user-info {
+    background-color: transparent !important;
+    padding: 0;
+  }
+  .nav-user-open {
+    width: fit-content;
+    position: fixed;
+    bottom: 100px;
+    padding: 10px;
+  }
 }
 
 @media screen and (max-width: 500px) {
   /* .nav-user-info-cont { position: fixed; left: 5px; bottom: 25px }
   .nav-user-open { position: fixed; left: 10px; bottom:  70px } */
-  .nav-user-info { position: fixed; bottom: 60px }
+  .nav-user-info {
+    position: fixed;
+    bottom: 60px;
+  }
+}
+
+@media (max-width: 430px) {
+  .nav-list li,
+  .tw-logo {
+    padding: 15px 10px;
+  }
+
+  .nav-list li:hover,
+  .nav-list li:active {
+    background-color: transparent;
+  }
 }
