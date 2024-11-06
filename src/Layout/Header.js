@@ -20,13 +20,11 @@ const Header = () => {
 
       if (scrollPercent >= 90 || scrollPercent <= 10) {
         if (!hasSetOpacity.current.high) {
-          console.log("heyyy");
           setOpacity(100);
           hasSetOpacity.current.high = true;
           hasSetOpacity.current.low = false;
         }
       } else if (!hasSetOpacity.current.low) {
-        console.log("hi");
         setOpacity(40);
         hasSetOpacity.current.low = true;
         hasSetOpacity.current.high = false;
@@ -37,8 +35,6 @@ const Header = () => {
 
     return () => div.removeEventListener("scroll", handleScroll);
   }, []);
-
-  console.log("<Header/>");
 
   return (
     <div
