@@ -117,7 +117,7 @@ const NavBar = () => {
             )
         )}
       </ul>
-      <div className="d-flex w-100 justify-content-center mt-4">
+      <div className="d-flex w-100 justify-content-center mt-4 nav-tweet-btn">
         {token && (
           <button className="tw-blue-btn-lg" onClick={() => setShow(!show)}>
             Tweet

@@ -187,7 +187,7 @@ a:active {
 .loader {
   width: 30px;
   height: 30px;
-  border: 4px solid #083653;
+  border: 4px solid #bbe4ff;
   border-bottom-color: #169cf1;
   border-radius: 50%;
   display: inline-block;
@@ -238,8 +238,12 @@ a:active {
   .tweet-icons .blue-icon,
   .tweet-icons .pink-icon,
   .tweet-icons .green-icon {
-    filter: invert(37%) sepia(10%) saturate(152%) hue-rotate(161deg)
-      brightness(95%) contrast(86%);
+    fill: #5e6163;
+  }
+
+  .loader {
+    border: 4px solid #083653;
+    border-bottom-color: #169cf1;
   }
 }
 
@@ -314,14 +318,30 @@ a:active {
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 440px) {
   .left-bar {
-    width: fit-content;
-    border-right: 0.5px solid #2f3336;
+    display: flex;
+    flex-direction: row;
+    min-width: 100vw;
+    max-height: 100px;
+    position: fixed;
+    bottom: 0px;
+    background-color: #000;
+    z-index: 100;
+    border-top: 0.5px solid #2f3336;
+    padding: 10px;
   }
 
-  .middle-bar {
-    max-width: 100%;
-    font-size: 0.9rem;
+  .left-bar ul {
+    width: 100%;
+    height: fit-content !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .left-bar li {
+    padding: 0;
+    margin: 0 10px;
   }
 }

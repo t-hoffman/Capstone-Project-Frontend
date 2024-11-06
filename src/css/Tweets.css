@@ -35,21 +35,54 @@
   }
 }
 
-.tweet-icons { display: flex }
-.tweet-icons .blue-icon, 
+.tweet-icons {
+  display: flex;
+}
+.tweet-icons .blue-icon,
 .tweet-icons .pink-icon,
-.tweet-icons .green-icon { padding: 5px 8px; border-radius: 50%; margin-top: 5px; }
-.blue-count { color: #849099; font-weight: normal }
-.blue-icon:hover + .blue-count { color: #169cf1 }
-.green-count { color: #849099; font-weight: normal }
-.green-icon:hover + .green-count { color: #00ba7c }
-.pink-count { color: #849099; font-weight: normal }
-.pink-icon:hover + .pink-count { color: #f91980 }
-.tweet-icons svg { width: 15px; height: 15px; margin-top: -3px; line-height: 15px }
-.tweet-icons { font-size: 10pt }
+.tweet-icons .green-icon {
+  padding: 5px 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.blue-count {
+  color: #849099;
+  font-weight: normal;
+}
+.blue-icon:hover + .blue-count {
+  color: #169cf1;
+}
+.green-count {
+  color: #849099;
+  font-weight: normal;
+}
+.green-icon:hover + .green-count {
+  color: #00ba7c;
+}
+.pink-count {
+  color: #849099;
+  font-weight: normal;
+}
+.pink-icon:hover + .pink-count {
+  color: #f91980;
+}
+.tweet-icons svg {
+  width: 15px;
+  height: 15px;
+  margin-top: -3px;
+  line-height: 15px;
+}
+.tweet-icons {
+  font-size: 10pt;
+}
 
-#tweet.tweet-icons { width: 100%; align-items: stretch }
-#tweet.tweet-icons > div { flex:1 }
+#tweet.tweet-icons {
+  width: 100%;
+  align-items: stretch;
+}
+#tweet.tweet-icons > div {
+  flex: 1;
+}
 #tweet.tweet-icons div {
   display: flex;
   justify-content: center;
@@ -64,21 +97,31 @@
 }
 
 .tweet-icons .blue-icon:hover {
-  background-color: rgb(24, 158, 242, .15);
-  filter: invert(61%) sepia(95%) saturate(4496%) hue-rotate(182deg) brightness(103%) contrast(90%);
+  background-color: rgb(24, 158, 242, 0.15);
+}
+.tweet-icons .blue-icon:hover svg {
+  filter: invert(61%) sepia(95%) saturate(4496%) hue-rotate(182deg)
+    brightness(103%) contrast(90%);
 }
 .tweet-icons .pink-icon:hover {
-  background-color: rgb(249, 25, 128, .15);
-  filter: invert(48%) sepia(99%) saturate(7387%) hue-rotate(321deg) brightness(99%) contrast(96%);
+  background-color: rgb(249, 25, 128, 0.15);
+}
+.tweet-icons .pink-icon:hover svg {
+  filter: invert(48%) sepia(99%) saturate(7387%) hue-rotate(321deg)
+    brightness(99%) contrast(96%);
 }
 .tweet-icons .green-icon:hover {
-  background-color: rgb(1, 180, 120, .15);
-  filter: invert(41%) sepia(99%) saturate(1542%) hue-rotate(131deg) brightness(97%) contrast(99%);
+  background-color: rgb(1, 180, 120, 0.15);
+}
+.tweet-icons .green-icon:hover svg {
+  filter: invert(41%) sepia(99%) saturate(1542%) hue-rotate(131deg)
+    brightness(97%) contrast(99%);
 }
 
 .d-tweet svg {
   width: 15px;
-  filter: invert(63%) sepia(12%) saturate(329%) hue-rotate(163deg) brightness(87%) contrast(86%);
+  filter: invert(63%) sepia(12%) saturate(329%) hue-rotate(163deg)
+    brightness(87%) contrast(86%);
 }
 
 .d-tweet-open {
@@ -86,20 +129,25 @@
   top: 25px;
   right: 30px;
   padding: 5px 10px;
-  border: 1px solid #B51A23;
+  border: 1px solid #b51a23;
   border-radius: 25px;
-  color: #B51A23;
+  color: #b51a23;
   font-size: 10pt;
   display: none;
 }
-.d-tweet-open:hover { background-color: #ffebec }
+.d-tweet-open:hover {
+  background-color: #ffebec;
+}
 
-.d-tweet-open svg { 
+.d-tweet-open svg {
   width: 15px;
   margin: -3px 5px 0 0;
-  filter: invert(15%) sepia(91%) saturate(3504%) hue-rotate(347deg) brightness(81%) contrast(94%);
+  filter: invert(15%) sepia(91%) saturate(3504%) hue-rotate(347deg)
+    brightness(81%) contrast(94%);
 }
 
 @media (prefers-color-scheme: dark) {
-  .d-tweet-open:hover { background-color: #fa8a8f }
+  .d-tweet-open:hover {
+    background-color: #fa8a8f;
+  }
 }
