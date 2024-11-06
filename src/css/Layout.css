@@ -303,6 +303,10 @@ a:active {
     margin: 0 10px;
   }
 
+  .middle-bar {
+    padding-bottom: 60px;
+  }
+
   .right-bar-other {
     padding-bottom: 70px;
   }
