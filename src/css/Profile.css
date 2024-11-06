@@ -33,7 +33,10 @@
   -webkit-backface-visibility: hidden;
 }
 
-.profile-avatar img { border-radius: 50%; width: 133.5px  }
+.profile-avatar img {
+  border-radius: 50%;
+  width: 133.5px;
+}
 
 .profile-bottom {
   width: 100%;
@@ -54,14 +57,16 @@
 .prof-button {
   width: 25px;
   height: 25px;
-  border: 1px solid #E4E9EB;
+  border: 1px solid #e4e9eb;
   border-radius: 50%;
   padding: 20px;
   position: relative;
   cursor: pointer;
 }
 
-.prof-button:hover { background-color: #EAEAEA }
+.prof-button:hover {
+  background-color: #eaeaea;
+}
 
 @media (prefers-color-scheme: dark) {
   .profile-avatar {
@@ -69,23 +74,48 @@
     background-color: #000;
   }
 
-  .profile-bottom svg { 
-    filter: invert(97%) sepia(100%) saturate(2%) hue-rotate(266deg) brightness(112%) contrast(100%);
+  .profile-bottom svg {
+    filter: invert(97%) sepia(100%) saturate(2%) hue-rotate(266deg)
+      brightness(112%) contrast(100%);
   }
-  .prof-button { border: 1px solid #2B3135 }
-  .prof-button:hover { background-color: #151515 } 
+  .prof-button {
+    border: 1px solid #2b3135;
+  }
+  .prof-button:hover {
+    background-color: #151515;
+  }
 }
 
 @media screen and (max-width: 500px) {
-  .profile-banner-top { height: 15vh; background-size: cover }
-  .profile-banner { height: 19.5vh }
-  .profile-avatar { border: 3px solid #fff; bottom: 0; }
-  .profile-avatar img { width: 60px; height: 60px }
-  .profile-bottom { height: fit-content; padding: 0 }
-  .overlay { display: none }
-  .prof-button { margin-top: 5px }
+  .profile-banner-top {
+    height: 15vh;
+    background-size: cover;
+  }
+  .profile-banner {
+    height: 19.5vh;
+  }
+  .profile-avatar {
+    border: 3px solid #fff;
+    bottom: 0;
+  }
+  .profile-avatar img {
+    width: 60px;
+    height: 60px;
+  }
+  .profile-bottom {
+    height: fit-content;
+    padding: 0;
+  }
+  .overlay {
+    display: none;
+  }
+  .prof-button {
+    margin: 10px;
+  }
 }
 
 @media screen and (max-width: 500px) and (prefers-color-scheme: dark) {
-  .profile-avatar { border: 3px solid #000 }
+  .profile-avatar {
+    border: 3px solid #000;
+  }
 }

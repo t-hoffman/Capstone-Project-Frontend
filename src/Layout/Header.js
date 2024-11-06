@@ -1,3 +1,4 @@
+import Logo from "Components/Logo";
 import NavBar from "Components/NavBar/NavBar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -30,12 +31,11 @@ const Header = () => {
       className="left-bar"
       style={{
         opacity: opacity + "%",
-        transition: "opacity 200ms ease-in-out",
       }}
     >
       <Link to="/" id="tw-logo">
         <div className="tw-logo">
-          <img src="/xlogo.svg" id="x-logo" width={30} />
+          <Logo />
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 248 204"

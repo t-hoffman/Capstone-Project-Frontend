@@ -109,7 +109,7 @@
   .tw-logo {
     margin: 0;
   }
-  .tw-logo img {
+  #x-logo {
     filter: brightness(0) invert(1);
   }
   .nav-list a,
@@ -214,6 +214,10 @@
   .tw-logo img {
     margin: 0 20px 0 15px;
     padding: 0;
+  }
+
+  .tw-logo:hover {
+    background-color: transparent;
   }
 
   .nav-list {

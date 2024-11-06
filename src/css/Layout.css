@@ -91,7 +91,7 @@ a:active {
 .tweet-box {
   display: flex;
   border-top: 1px solid #eff3f4;
-  padding: 10px 15px 10px 15px;
+  padding: 10px 15px;
 }
 
 .content-box {
@@ -328,8 +328,9 @@ a:active {
     bottom: 0px;
     background-color: #000;
     z-index: 100;
-    border-top: 0.5px solid #2f3336;
+    border-top: 1px solid #2f3336;
     padding: 10px;
+    transition: opacity 300ms ease-in-out;
   }
 
   .left-bar ul {
@@ -343,5 +344,9 @@ a:active {
   .left-bar li {
     padding: 0;
     margin: 0 10px;
+  }
+
+  .right-bar-other {
+    padding-bottom: 70px;
   }
 }
