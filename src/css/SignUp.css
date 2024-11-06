@@ -125,11 +125,12 @@ input {
 
 .signup-form input:-webkit-autofill,
 .signup-form input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 50px #000 inset !important;
-  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0 0 0 50px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
+  color: #000;
   outline: none;
   background-image: none !important;
-  box-shadow: 0 50px 0px inset #000 !important;
+  box-shadow: 0 50px 0px inset #fff !important;
 }
 
 @media (max-width: 430px) {
@@ -183,5 +184,15 @@ input {
   }
   .input-cont input {
     color: white;
+  }
+
+  .signup-form input:-webkit-autofill,
+  .signup-form input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px #000 inset !important;
+    -webkit-text-fill-color: #fff !important;
+    color: #fff;
+    outline: none;
+    background-image: none !important;
+    box-shadow: 0 50px 0px inset #000 !important;
   }
 }
