@@ -3,16 +3,18 @@
   background-color: #fff;
   border: none;
   border-radius: 15px;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .modal-dialog {
-  width: 100vw;
+  width: 100dvw;
   height: 100dvh;
   display: flex;
   align-items: center;
   max-width: 600px !important;
   margin: 0 auto;
-  position: fixed;
+  /* position: fixed; */
 }
 .modal-dialog div {
   max-height: fit-content !important;
@@ -145,13 +147,12 @@ input {
   .modal-dialog {
     /* margin-top: calc(); */
   }
-  .modal-content {
-    width: 90%;
-    margin: 0 auto;
-  }
   .modal-footer button {
     width: 60%;
     padding: 10px;
+  }
+  .modal-body {
+    width: 100%;
   }
   .modal-body div input,
   input {
@@ -161,7 +162,7 @@ input {
     font-size: 80%;
   }
   .signup-form {
-    padding: 0 2em;
+    padding: 0 0.5em;
   }
 }
 

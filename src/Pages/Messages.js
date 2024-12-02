@@ -26,6 +26,8 @@ const Messages = () => {
     setMessages(data);
   };
 
+  console.log(messages);
+
   useEffect(() => {
     if (!token) navigate("/signin");
     if (userInfo) getMessages();
